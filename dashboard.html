@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRAMSIKSHA - Dashboard</title>
+
+  <!-- ✅ Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ✅ Your CSS + JS -->
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+  <!-- 🔹 Top Navbar -->
+  <header class="bg-green-700 text-white p-4 flex justify-between items-center shadow-md">
+    <h1 class="text-xl font-bold">Dashboard</h1>
+    <div class="flex gap-4 items-center">
+      <button class="bg-green-600 px-3 py-1 rounded-md">🔔</button>
+      <img src="assets/images/profile.png" alt="Profile" class="w-10 h-10 rounded-full border">
+    </div>
+  </header>
+
+  <!-- 🔹 Main Content -->
+  <main class="p-6 flex-1">
+
+    <!-- Quick Actions -->
+    <h2 class="text-lg font-semibold mb-4">Quick Actions</h2>
+    <div class="grid grid-cols-2 gap-4 mb-8">
+      <div class="bg-green-600 text-white rounded-2xl shadow-lg p-6 flex flex-col items-center cursor-pointer hover:bg-green-700">
+        Submit Idea
+      </div>
+      <div class="bg-yellow-500 text-white rounded-2xl shadow-lg p-6 flex flex-col items-center cursor-pointer hover:bg-yellow-600">
+        View Deadlines
+      </div>
+      <div class="bg-orange-500 text-white rounded-2xl shadow-lg p-6 flex flex-col items-center cursor-pointer hover:bg-orange-600">
+        Join Meeting
+      </div>
+      <div class="bg-blue-500 text-white rounded-2xl shadow-lg p-6 flex flex-col items-center cursor-pointer hover:bg-blue-600">
+        Resources
+      </div>
+    </div>
+
+    <!-- Progress Tracker -->
+    <h2 class="text-lg font-semibold mb-4">Your Progress</h2>
+    <div class="bg-white rounded-xl shadow p-4 mb-8">
+      <div class="w-full bg-gray-200 rounded-full h-4">
+        <div class="bg-green-600 h-4 rounded-full w-2/4"></div>
+      </div>
+      <p class="text-sm text-gray-600 mt-2">50% Complete (Prototype Stage)</p>
+    </div>
+
+    <!-- Leaderboard -->
+    <h2 class="text-lg font-semibold mb-4">Leaderboard</h2>
+    <div class="bg-white rounded-xl shadow p-4">
+      <ol class="list-decimal list-inside space-y-2">
+        <li class="font-bold text-green-700">Team Innovators – 120 pts</li>
+        <li class="font-semibold text-gray-700">RuralCoders – 110 pts</li>
+        <li class="text-gray-600">AgriTechies – 90 pts</li>
+      </ol>
+    </div>
+
+  </main>
+
+</body>
+</html>
