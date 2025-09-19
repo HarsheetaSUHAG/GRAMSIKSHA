@@ -1,0 +1,33 @@
+.village-bg {
+  background-image: url('../images/village-bg.png');
+}
+
+body {
+  background-image: url('public/images/village-bg.png');
+}
+.quiz-btn {
+  background: #f97316; /* orange */
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  margin: 0.25rem;
+  transition: 0.2s;
+}
+.quiz-btn:hover {
+  background: #ea580c; /* darker orange */
+}
+/* Smooth animations */
+.animate-slideUp {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-in-out;
+}
+.animate-fadeIn {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
