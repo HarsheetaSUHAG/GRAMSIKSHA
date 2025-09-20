@@ -1,9 +1,8 @@
-/* Main container for the journey map */
 #journey-map {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-image: url('../images/farm-path.png'); /* Create a fun background image with a path */
+  background-image: url('../images/farm-path.png'); /* This path goes up one folder from css, then into images */
   background-size: cover;
   background-position: center;
 }
@@ -19,12 +18,11 @@
   text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
 
-/* Styling for each stop on the journey */
 .journey-stop {
   position: absolute;
   width: 60px;
   height: 60px;
-  background-color: #f97316; /* Orange color */
+  background-color: #f97316;
   color: white;
   border-radius: 50%;
   display: flex;
@@ -37,7 +35,6 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Styling for the current, clickable stop */
 .journey-stop.active {
   cursor: pointer;
   transform: scale(1.1);
@@ -47,7 +44,6 @@
   transform: scale(1.2);
 }
 
-/* Styling for completed stops */
 .journey-stop.completed {
   background-color: #22c55e; /* Green color */
   cursor: default;
@@ -58,14 +54,12 @@
   color: white;
 }
 
-/* Styling for locked, unclickable stops */
 .journey-stop.locked {
   background-color: #9ca3af; /* Gray color */
   cursor: not-allowed;
   filter: grayscale(80%);
 }
 
-/* Modal styles for the quiz and badge pop-ups */
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -88,7 +82,6 @@
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* Quiz radio button styles */
 .quiz-option {
   display: block;
   padding: 0.75rem;

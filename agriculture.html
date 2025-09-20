@@ -1,106 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agriculture Adventure - GRAMSIKSHA</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agriculture Journey - GRAMSIKSHA</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="public/css/styles.css">
+  <link rel="stylesheet" href="public/css/journey.css">
 </head>
-<body class="h-screen w-screen flex flex-col bg-cover bg-center relative">
+<<body class="bg-green-50 overflow-hidden">
 
-  <!-- Overlay -->
-  <div class="absolute inset-0 bg-black/40"></div>
-
-  <!-- Content -->
-  <div class="relative z-10 flex flex-col items-center w-full h-full overflow-y-auto p-6">
-
-    <!-- Header -->
-    <div class="flex justify-between items-center w-full max-w-5xl mb-6">
-      <h1 class="text-3xl font-bold text-white">🌱 Agriculture Adventure: From Seed to Supper</h1>
-      <a href="courses.html" 
-         class="bg-orange-500 text-white px-4 py-2 rounded-lg shadow hover:bg-orange-600">
-        Back to Courses
-      </a>
-    </div>
-
-    <!-- Course Structure Row -->
-    <div class="grid grid-cols-4 gap-4 max-w-5xl w-full mb-8">
-      <div class="bg-white/90 p-4 rounded-lg text-center shadow hover:scale-105 transition">
-        🌱 <p class="mt-2 font-bold">Seeds</p>
-      </div>
-      <div class="bg-white/90 p-4 rounded-lg text-center shadow hover:scale-105 transition">
-        ☀️ <p class="mt-2 font-bold">Sunlight</p>
-      </div>
-      <div class="bg-white/90 p-4 rounded-lg text-center shadow hover:scale-105 transition">
-        💧 <p class="mt-2 font-bold">Water</p>
-      </div>
-      <div class="bg-white/90 p-4 rounded-lg text-center shadow hover:scale-105 transition">
-        🌾 <p class="mt-2 font-bold">Harvest</p>
-      </div>
-    </div>
-
-    <!-- Lesson Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl w-full">
-
-      <!-- Lesson 1 -->
-      <div class="bg-yellow-100 rounded-xl shadow-lg p-6 hover:scale-105 transition">
-        <h3 class="text-lg font-bold text-green-800">Mission 1: The Secret Life of Seeds 🌱</h3>
-        <p class="text-sm text-gray-700 mt-2">Discover how tiny seeds grow into big plants with soil, water, and sunlight.</p>
-        <button onclick="startQuiz(1)" class="mt-4 bg-orange-500 text-white px-4 py-2 rounded-lg">Start Quiz</button>
-        <div id="quiz1" class="hidden mt-4">
-          <p class="font-semibold">What helps a seed sprout?</p>
-          <button onclick="checkAnswer(1,'wrong')" class="quiz-btn">🍫 Chocolate</button>
-          <button onclick="checkAnswer(1,'correct')" class="quiz-btn">💧 Water</button>
-          <button onclick="checkAnswer(1,'wrong')" class="quiz-btn">🎮 Video Games</button>
-          <p id="feedback1" class="mt-2"></p>
-        </div>
-      </div>
-
-      <!-- Lesson 2 -->
-      <div class="bg-green-100 rounded-xl shadow-lg p-6 hover:scale-105 transition">
-        <h3 class="text-lg font-bold text-green-800">Mission 2: Sunshine & Water Wonders ☀️💧</h3>
-        <p class="text-sm text-gray-700 mt-2">Plants use sunlight to make food and water to stay healthy and strong.</p>
-        <button onclick="startQuiz(2)" class="mt-4 bg-orange-500 text-white px-4 py-2 rounded-lg">Start Quiz</button>
-        <div id="quiz2" class="hidden mt-4">
-          <p class="font-semibold">What do plants use to make food?</p>
-          <button onclick="checkAnswer(2,'correct')" class="quiz-btn">☀️ Sunlight</button>
-          <button onclick="checkAnswer(2,'wrong')" class="quiz-btn">📱 Mobile Phone</button>
-          <button onclick="checkAnswer(2,'wrong')" class="quiz-btn">🍔 Burgers</button>
-          <p id="feedback2" class="mt-2"></p>
-        </div>
-      </div>
-
-      <!-- Mini-Game -->
-      <div class="bg-blue-100 rounded-xl shadow-lg p-6 hover:scale-105 transition">
-        <h3 class="text-lg font-bold text-blue-800">Mini-Game: Water the Plant 💧🌱</h3>
-        <p class="text-sm text-gray-700 mt-2">Click the button 3 times to help the seed grow!</p>
-        <button onclick="waterPlant()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg">💧 Water</button>
-        <p id="plantStatus" class="mt-2 text-green-700"></p>
-      </div>
-
-      <!-- Fun Facts -->
-      <div class="bg-pink-100 rounded-xl shadow-lg p-6 hover:scale-105 transition">
-        <h3 class="text-lg font-bold text-pink-800">Fun Facts 🌻</h3>
-        <ul class="list-disc text-sm text-gray-700 mt-2 ml-4">
-          <li>Sunflowers always face the sun 🌞</li>
-          <li>India grows over 100 types of rice 🍚</li>
-          <li>Some seeds can sleep for 100 years before growing ⏳</li>
-        </ul>
-      </div>
-
-    </div>
-
-    <!-- Completion Badge -->
-    <div id="badgeSection" class="hidden bg-white/90 rounded-xl shadow-lg p-6 max-w-3xl w-full text-center mt-8">
-      <h2 class="text-xl font-bold text-green-800">🎉 Congratulations!</h2>
-      <p class="mt-2 text-gray-700">You completed the Agriculture Adventure and earned the</p>
-      <p class="text-lg font-bold text-orange-600 mt-2">🌾 Young Farmer Badge</p>
-    </div>
-
+  <div id="journey-map">
+    <h1 class="map-title">Your Farming Adventure! 🌱</h1>
+    
+    <div id="stop-1" class="journey-stop active" style="top: 20%; left: 15%;">1</div>
+    <div id="stop-2" class="journey-stop locked" style="top: 50%; left: 30%;">2</div>
+    <div id="stop-3" class="journey-stop locked" style="top: 25%; left: 50%;">3</div>
+    <div id="stop-4" class="journey-stop locked" style="top: 55%; left: 65%;">4</div>
+    <div id="stop-5" class="journey-stop locked" style="top: 35%; left: 85%;">5</div>
   </div>
 
-  <!-- External JS -->
-  <script src="public/js/agriculture.js"></script>
+  <div id="quiz-modal" class="modal-backdrop hidden">
+    <div class="modal-content">
+      <h2 id="quiz-title" class="text-2xl font-bold text-green-700 mb-4">Quiz Time!</h2>
+      <p id="quiz-question" class="mb-4"></p>
+      <form id="quiz-form">
+        <div id="quiz-options" class="space-y-2"></div>
+        <button type="submit" class="mt-6 bg-orange-500 text-white px-6 py-2 rounded-lg shadow hover:bg-orange-600">Check Answer</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="badge-modal" class="modal-backdrop hidden">
+    <div class="modal-content text-center">
+      <h2 class="text-3xl font-bold text-yellow-500">Adventure Complete!</h2>
+      <img src="public/images/final-badge.png" alt="Final Badge" class="w-48 h-48 mx-auto my-4">
+      <p class="text-lg">You've earned the **Master Farmer Badge**!</p>
+      <button id="close-badge-modal" class="mt-6 bg-green-600 text-white px-6 py-2 rounded-lg shadow hover:bg-green-700">Play Again</button>
+    </div>
+  </div>
+
+  <script src="public/js/journey.js"></script>
 </body>
 </html>
