@@ -40,7 +40,19 @@
         }
     </style>
 </head>
-<body class="bg-blue-100 flex items-center justify-center min-h-screen p-4">
+<body class="bg-blue-100 flex flex-col items-center justify-center min-h-screen pt-20 p-4">
+    <nav class="bg-white/90 backdrop-blur-md shadow-md fixed top-0 left-0 w-full z-20">
+      <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+          <img src="public/images/image.png" alt="Logo" class="h-12">
+          <h1 class="text-lg font-bold text-green-700">GRAMSIKSHA</h1>
+        </div>
+        <div class="flex items-center space-x-4">
+          <button id="progress-button" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-600 font-semibold">📊 Reports</button>
+          <a href="index.html#courses" class="bg-orange-500 text-white px-4 py-2 rounded-lg shadow hover:bg-orange-600 font-semibold">Back to Courses</a>
+        </div>
+      </div>
+    </nav>
 
     <div class="w-full max-w-5xl text-center">
         <h1 class="text-4xl md:text-5xl font-bold text-slate-800 mb-4">Welcome to the Learning Adventure!</h1>
@@ -68,6 +80,7 @@
             <button id="close-modal" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Let's Go!</button>
         </div>
     </div>
+    
 
     <script>
         // --- Mission Data ---
@@ -149,5 +162,6 @@
             }
         });
     </script>
+    
 </body>
 </html>

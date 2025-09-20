@@ -30,23 +30,23 @@
 }
     </style>
 </head>
-<body class="bg-blue-100 flex items-center justify-center min-h-screen p-4">
-      <nav class="bg-white/90 backdrop-blur-md shadow-md fixed top-0 left-0 w-full z-20">
+<body class="bg-blue-100 flex flex-col items-center justify-center min-h-screen pt-20 p-4">
+    <nav class="bg-white/90 backdrop-blur-md shadow-md fixed top-0 left-0 w-full z-20">
       <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-      <div class="flex items-center space-x-2">
-        <img src="public/images/image.png" alt="Logo" class="h-12">
-        <h1 class="text-lg font-bold text-green-700">GRAMSIKSHA</h1>
+        <div class="flex items-center space-x-2">
+          <img src="public/images/image.png" alt="Logo" class="h-12">
+          <h1 class="text-lg font-bold text-green-700">GRAMSIKSHA</h1>
+        </div>
+        <div class="flex items-center space-x-4">
+          <button id="progress-button" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-600 font-semibold">📊 Reports</button>
+          <a href="index.html#courses" class="bg-orange-500 text-white px-4 py-2 rounded-lg shadow hover:bg-orange-600 font-semibold">Back to Courses</a>
+        </div>
       </div>
-      <div class="flex items-center space-x-4">
-        <button id="progress-button" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-600 font-semibold">📊 Reports</button>
-        <a href="index.html#courses" class="bg-orange-500 text-white px-4 py-2 rounded-lg shadow hover:bg-orange-600 font-semibold">Back to Courses</a>
-      </div>
-    </div>
-  </nav>
-
+    </nav>
     <div class="w-full max-w-5xl text-center">
         <h1 class="text-4xl md:text-5xl font-bold text-slate-800 mb-4">Welcome to the Learning Adventure!</h1>
         <p class="text-slate-600 mb-8">Click on a numbered mission to begin your journey.</p>
+        </div>
         <div id="game-map-container" class="relative game-map-container">
             <img src="public/images/Generated Image September 20, 2025 - 4_17PM.png" alt="A cartoon village with a path" class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl">
             <div data-mission="1" class="mission-marker absolute w-10 h-10 md:w-12 md:h-12 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-xl cursor-pointer border-4 border-white" style="top: 75%; left: 15%;">1</div>
@@ -245,5 +245,6 @@
     // --- Initial Setup ---
     updateMarkers(); // Set the initial state of the map on page load
 </script>
+
 </body>
 </html>

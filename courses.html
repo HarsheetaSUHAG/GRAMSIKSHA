@@ -7,20 +7,30 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="public/styles/courses.css">
 </head>
-<body class="h-screen w-screen flex flex-col relative bg-center">
-
+<body class="h-screen w-screen flex flex-col relative bg-center bg-cover" style="background-image: url('public/images/village-bg.png');"></body>
+  
 
   <!-- Overlay -->
   <div class="absolute inset-0 bg-black/40"></div>
 
   <!-- Navbar -->
   <header class="relative z-10 bg-white/80 backdrop-blur-md shadow p-4 flex justify-between items-center">
-    <img src="public/images/image.png" alt="GRAMSIKSHA Logo" class="h-16 mb-2">
-    <h1 class="text-xl font-bold text-blue-900">GRAMSIKSHA</h1>
+  <div class="flex items-center gap-4">
+    <a href="/" class="flex items-center gap-4">
+      <img src="public/images/image.png" alt="GRAMSIKSHA Logo" class="h-16">
+      <h1 class="text-xl font-bold text-blue-900">GRAMSIKSHA</h1>
+    </a>
+  </div>
+
+  <div class="flex items-center gap-4">
+    <a href="leaderboard.html" class="bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-600">
+      Leaderboard
+    </a>
     <a href="index.html" class="bg-orange-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-orange-600">
       Logout
     </a>
-  </header>
+  </div>
+</header>
 
   <!-- Main Section -->
   <main class="relative z-10 flex-1 p-6 max-w-6xl mx-auto">
@@ -58,9 +68,9 @@
         <h3 class="text-lg font-bold text-blue-900">Fun with Math</h3>
         <p class="text-sm text-gray-700 mt-2">Learn numbers, puzzles, and logic through fun activities.</p>
         <a href="maths.html"
-         class="mt-4 w-full bg-orange-500 text-white py-2 rounded-lg text-center hover:bg-orange-600">
-          Start Course
-        </a>
+   class="mt-4 block w-full bg-orange-500 text-white py-2 rounded-lg text-center hover:bg-orange-600">
+    Start Course
+</a>  
       </div>
 
       <!-- Course Card -->
@@ -92,6 +102,7 @@
           Start Course
         </button>
       </div>
+      
 
     </div>
   </main>
