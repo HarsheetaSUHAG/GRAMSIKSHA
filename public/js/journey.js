@@ -173,5 +173,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Initial setup ---
     loadProgress();
+    // Inside public/js/journey.js
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- 1. DETECT THE CURRENT PAGE ---
+    const currentPage = window.location.pathname;
+
+    // --- 2. CREATE SEPARATE DATA FOR EACH COURSE ---
+    const agricultureQuizzes = { 'stop-1': { /* ... */ } };
+    const agricultureFunFacts = { 'stop-1': { /* ... */ } };
+
+    // Data for your other course
+    const literatureGames = {
+        'stop-1': { type: 'hangman', title: 'Word Challenge 1' },
+        'stop-2': { type: 'hangman', title: 'Word Challenge 2' }
+        // ... and so on
+    };
+    
+    let progressKey = ''; // This will hold 'agriculture-progress' or 'literature-progress'
+    
+    if (currentPage.includes('agriculture')) {
+        progressKey = 'agriculture-progress';
+    } else if (currentPage.includes('literature')) {
+        progressKey = 'literature-progress';
+    }
+
+    // --- 3. MODIFY THE EVENT LISTENER ---
+    stops.forEach(stop => {
+        stop.addEventListener('click', () => {
+            if (stop.classList.contains('locked')) return;
+            
+            // This is the "brain" that decides what to do
+            if (currentPage.includes('agriculture')) {
+                // If on the agriculture page, open the quiz modal
+                openQuiz(stop.id); 
+            } else if (currentPage.includes('literature')) {
+                // If on the literature page, open the hangman game!
+                // We would need a function like this:
+                showHangmanGame(stop.id); 
+            }
+        });
+    });
+
+    // --- 4. UPDATE PROGRESS FUNCTIONS ---
+    // Make sure your getProgress() and saveProgress() functions use the `progressKey` variable
+    function getProgress() {
+        const progress = localStorage.getItem(progressKey); // Uses the dynamic key
+        return progress ? JSON.parse(progress) : { completedStops: [] };
+    }
+    // ... same change for saveProgress() ...
+
+
+    // All your other functions (loadProgress, openQuiz, etc.) go here
+    // You would also add your new `showHangmanGame()` function here.
+
+});
 });
 
