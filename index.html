@@ -9,170 +9,164 @@
 </head>
 <body class="font-sans bg-gray-50">
 
-  <!-- Navbar -->
   <nav class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-md z-50">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-    
-    <!-- Left: Logo -->
-    <div class="flex items-center space-x-2">
-      <img src="public/images/image.png" alt="Logo" class="h-10">
-      <h1 class="text-xl font-bold text-green-700">GRAMSIKSHA</h1>
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      
+      <div class="flex items-center space-x-2">
+        <img src="public/images/image.png" alt="Logo" class="h-16">
+        <h1 class="text-xl font-bold text-green-700">GRAMSIKSHA</h1>
+      </div>
+
+      <div class="flex space-x-6 font-semibold text-gray-800 mx-auto">
+        <a href="#home" class="hover:text-orange-500" data-translate-key="navHome">Home</a>
+        <a href="#about" class="hover:text-orange-500" data-translate-key="navAbout">About Us</a>
+        <a href="#whatsnew" class="hover:text-orange-500" data-translate-key="navWhatsNew">What's New</a>
+<a href="register.html" class="hover:text-orange-500" data-translate-key="navCourses">Courses</a>        <a href="#policy" class="hover:text-orange-500" data-translate-key="navPolicy">Policy</a>
+        <a href="#contact" class="hover:text-orange-500" data-translate-key="navContact">Contact</a>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <a href="register.html" class="bg-green-600 text-white px-4 py-2 rounded-lg shadow hover:bg-green-700" data-translate-key="btnRegister">
+          Register
+        </a>
+        <a href="login.html" class="bg-orange-500 text-white px-4 py-2 rounded-lg shadow hover:bg-orange-600" data-translate-key="btnLogin">
+          Login
+        </a>
+        <button id="lang-switcher" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg shadow hover:bg-gray-300 font-semibold" data-translate-key="langSwitcher">
+          हिंदी
+        </button>
+      </div>
     </div>
+  </nav>
 
-    <!-- Right: Menu Items + Login -->
-    <div class="flex items-center space-x-6 font-semibold text-gray-800">
-      <a href="#home" class="flex items-center hover:text-orange-500">🏠 Home</a>
-      <a href="#about" class="flex items-center hover:text-orange-500">🌱 About</a>
-      <a href="#features" class="flex items-center hover:text-orange-500">⭐ Different</a>
-      <a href="#courses" class="flex items-center hover:text-orange-500">📚 Courses</a>
-      <a href="#policy" class="flex items-center hover:text-orange-500">📜 Policy</a>
-      <a href="#contact" class="flex items-center hover:text-orange-500">📞 Contact</a>
-      <a href="login.html" class="bg-orange-500 text-white px-4 py-2 rounded-lg shadow hover:bg-orange-600">
-        Login
-      </a>
-    </div>
-  </div>
-</nav>
-
-
-
-  <!-- Hero Section -->
   <section id="home" class="relative h-screen flex items-center justify-center text-center text-white"
            style="background-image: url('public/images/village-bg.png'); background-size: cover; background-position: center;">
     <div class="absolute inset-0 bg-gradient-to-r from-green-900/70 to-black/70"></div>
     <div class="relative z-10 px-6 animate-fadeIn">
-      <h2 class="text-4xl md:text-6xl font-extrabold drop-shadow-lg">Learning Made Simple for Villages 🌱</h2>
-      <p class="mt-4 text-lg md:text-xl text-gray-200">Fun, gamified education for rural kids aged 6–12, in Hindi & English.</p>
-      <a href="courses.html" class="mt-6 inline-block bg-orange-500 text-white px-6 py-3 rounded-lg shadow hover:bg-orange-600 transition-transform transform hover:scale-105">
-        Start Learning →
-      </a>
+      <h2 class="text-4xl md:text-6xl font-extrabold drop-shadow-lg" data-translate-key="heroTitle">Learning Made Simple for Villages 🌱</h2>
+      <p class="mt-4 text-lg md:text-xl text-gray-200" data-translate-key="heroSubtitle">Fun, gamified education for rural kids aged 6–12, in Hindi & English.</p>
+      <a href="register.html" class="mt-6 inline-block bg-orange-500 text-white px-6 py-3 rounded-lg shadow hover:bg-orange-600 transition-transform transform hover:scale-105" data-translate-key="heroCta">
+  Start Learning →
+</a>
     </div>
   </section>
 
-  <!-- About Us -->
   <section id="about" class="py-20 bg-white">
     <div class="max-w-6xl mx-auto text-center px-6 animate-slideUp">
-      <h3 class="text-3xl font-bold text-green-700">About Us</h3>
-      <p class="mt-4 text-gray-600 text-lg">We empower rural children with engaging, gamified education. GRAMSIKSHA blends agriculture, literacy, and STEM in fun missions & games tailored for ages 6–12.</p>
+      <h3 class="text-3xl font-bold text-green-700" data-translate-key="aboutTitle">About Us</h3>
+      <p class="mt-4 text-gray-600 text-lg" data-translate-key="aboutText">We empower rural children with engaging, gamified education. GRAMSIKSHA blends agriculture, literacy, and STEM in fun missions & games tailored for ages 6–12.</p>
     </div>
   </section>
 
-  <!-- What’s Different -->
-  <section id="features" class="py-16 bg-gray-100">
-  <h2 class="text-3xl font-bold text-center text-green-700 mb-12">
-    What’s Different in Us?
-  </h2>
+<section id="whatsnew" class="py-16 bg-gray-100">
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto px-6">
-    
-    <!-- Card 1 -->
-    <div class="relative rounded-2xl p-6 shadow-lg bg-white/30 backdrop-blur-lg border border-transparent hover:scale-105 transition duration-300"
-         style="border-image: linear-gradient(to right, #22c55e, #f97316) 1;">
-      <div class="flex items-center justify-center w-14 h-14 bg-green-100 rounded-full mx-auto mb-4 text-2xl">
-        🌱
+</section>    
+<h2 class="text-3xl font-bold text-center text-green-700 mb-12" data-translate-key="featuresTitle">
+      What’s Different in Us?
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto px-6">
+      
+      <div class="relative rounded-2xl p-6 shadow-lg bg-white/30 backdrop-blur-lg border border-transparent hover:scale-105 transition duration-300"
+           style="border-image: linear-gradient(to right, #22c55e, #f97316) 1;">
+        <div class="flex items-center justify-center w-14 h-14 bg-green-100 rounded-full mx-auto mb-4 text-2xl">
+          🌱
+        </div>
+        <h3 class="text-xl font-semibold text-center mb-2" data-translate-key="feature1Title">Localized Learning</h3>
+        <p class="text-gray-700 text-center" data-translate-key="feature1Text">Hindi & English support for rural kids.</p>
       </div>
-      <h3 class="text-xl font-semibold text-center mb-2">Localized Learning</h3>
-      <p class="text-gray-700 text-center">Hindi & English support for rural kids.</p>
-    </div>
 
-    <!-- Card 2 -->
-    <div class="relative rounded-2xl p-6 shadow-lg bg-white/30 backdrop-blur-lg border border-transparent hover:scale-105 transition duration-300"
-         style="border-image: linear-gradient(to right, #3b82f6, #22c55e) 1;">
-      <div class="flex items-center justify-center w-14 h-14 bg-blue-100 rounded-full mx-auto mb-4 text-2xl">
-        🎮
+      <div class="relative rounded-2xl p-6 shadow-lg bg-white/30 backdrop-blur-lg border border-transparent hover:scale-105 transition duration-300"
+           style="border-image: linear-gradient(to right, #3b82f6, #22c55e) 1;">
+        <div class="flex items-center justify-center w-14 h-14 bg-blue-100 rounded-full mx-auto mb-4 text-2xl">
+          🎮
+        </div>
+        <h3 class="text-xl font-semibold text-center mb-2" data-translate-key="feature2Title">Gamified Lessons</h3>
+        <p class="text-gray-700 text-center" data-translate-key="feature2Text">Quizzes, games, and interactive missions.</p>
       </div>
-      <h3 class="text-xl font-semibold text-center mb-2">Gamified Lessons</h3>
-      <p class="text-gray-700 text-center">Quizzes, games, and interactive missions.</p>
-    </div>
 
-    <!-- Card 3 -->
-    <div class="relative rounded-2xl p-6 shadow-lg bg-white/30 backdrop-blur-lg border border-transparent hover:scale-105 transition duration-300"
-         style="border-image: linear-gradient(to right, #f59e0b, #22c55e) 1;">
-      <div class="flex items-center justify-center w-14 h-14 bg-yellow-100 rounded-full mx-auto mb-4 text-2xl">
-        🌾
+      <div class="relative rounded-2xl p-6 shadow-lg bg-white/30 backdrop-blur-lg border border-transparent hover:scale-105 transition duration-300"
+           style="border-image: linear-gradient(to right, #f59e0b, #22c55e) 1;">
+        <div class="flex items-center justify-center w-14 h-14 bg-yellow-100 rounded-full mx-auto mb-4 text-2xl">
+          🌾
+        </div>
+        <h3 class="text-xl font-semibold text-center mb-2" data-translate-key="feature3Title">Rural Context</h3>
+        <p class="text-gray-700 text-center" data-translate-key="feature3Text">Agriculture & life skill–based content.</p>
       </div>
-      <h3 class="text-xl font-semibold text-center mb-2">Rural Context</h3>
-      <p class="text-gray-700 text-center">Agriculture & life skill–based content.</p>
-    </div>
 
-    <!-- Card 4 -->
-    <div class="relative rounded-2xl p-6 shadow-lg bg-white/30 backdrop-blur-lg border border-transparent hover:scale-105 transition duration-300"
-         style="border-image: linear-gradient(to right, #ec4899, #f97316) 1;">
-      <div class="flex items-center justify-center w-14 h-14 bg-pink-100 rounded-full mx-auto mb-4 text-2xl">
-        🏅
+      <div class="relative rounded-2xl p-6 shadow-lg bg-white/30 backdrop-blur-lg border border-transparent hover:scale-105 transition duration-300"
+           style="border-image: linear-gradient(to right, #ec4899, #f97316) 1;">
+        <div class="flex items-center justify-center w-14 h-14 bg-pink-100 rounded-full mx-auto mb-4 text-2xl">
+          🏅
+        </div>
+        <h3 class="text-xl font-semibold text-center mb-2" data-translate-key="feature4Title">Badges & Rewards</h3>
+        <p class="text-gray-700 text-center" data-translate-key="feature4Text">Motivation with achievements & badges.</p>
       </div>
-      <h3 class="text-xl font-semibold text-center mb-2">Badges & Rewards</h3>
-      <p class="text-gray-700 text-center">Motivation with achievements & badges.</p>
+
     </div>
-
-  </div>
-</section>
+  </section>
 
 
-  <!-- Courses Preview -->
   <section id="courses" class="py-20 bg-white">
     <div class="max-w-6xl mx-auto text-center px-6">
-      <h3 class="text-3xl font-bold text-green-700 mb-8">Our Courses</h3>
+      <h3 class="text-3xl font-bold text-green-700 mb-8" data-translate-key="coursesTitle">Our Courses</h3>
       <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div class="bg-yellow-100 p-6 rounded-xl shadow-lg hover:scale-105 transition transform animate-slideUp">
           <img src="public/images/agriculture.png" class="h-20 mx-auto mb-4">
-          <h4 class="font-bold">Agriculture Basics</h4>
-          <p class="text-sm text-gray-600 mt-2">Learn how seeds grow, farming tools, and crops.</p>
-          <a href="agriculture.html" class="text-orange-600 font-bold mt-2 inline-block">Start →</a>
+          <h4 class="font-bold" data-translate-key="course1Title">Agriculture Basics</h4>
+          <p class="text-sm text-gray-600 mt-2" data-translate-key="course1Text">Learn how seeds grow, farming tools, and crops.</p>
+          <a href="agriculture-journey.html" class="text-orange-600 font-bold mt-2 inline-block" data-translate-key="courseCta">Start →</a>
         </div>
         <div class="bg-green-100 p-6 rounded-xl shadow-lg hover:scale-105 transition transform animate-slideUp">
-          <img src="public/images/literacy.png" class="h-20 mx-auto mb-4">
-          <h4 class="font-bold">Literacy</h4>
-          <p class="text-sm text-gray-600 mt-2">Improve reading & writing with fun games.</p>
-          <a href="#" class="text-orange-600 font-bold mt-2 inline-block">Start →</a>
+          <img src="public/images/literature.png" class="h-20 mx-auto mb-4">
+          <h4 class="font-bold" data-translate-key="course2Title">Literacy</h4>
+          <p class="text-sm text-gray-600 mt-2" data-translate-key="course2Text">Improve reading & writing with fun games.</p>
+          <a href="#" class="text-orange-600 font-bold mt-2 inline-block" data-translate-key="courseCta">Start →</a>
         </div>
         <div class="bg-blue-100 p-6 rounded-xl shadow-lg hover:scale-105 transition transform animate-slideUp">
-          <img src="public/images/science.png" class="h-20 mx-auto mb-4">
-          <h4 class="font-bold">STEM</h4>
-          <p class="text-sm text-gray-600 mt-2">Explore science & math through activities.</p>
-          <a href="#" class="text-orange-600 font-bold mt-2 inline-block">Start →</a>
+          <img src="public/images/stem.png" class="h-20 mx-auto mb-4">
+          <h4 class="font-bold" data-translate-key="course3Title">STEM</h4>
+          <p class="text-sm text-gray-600 mt-2" data-translate-key="course3Text">Explore science & math through activities.</p>
+          <a href="#" class="text-orange-600 font-bold mt-2 inline-block" data-translate-key="courseCta">Start →</a>
         </div>
         <div class="bg-pink-100 p-6 rounded-xl shadow-lg hover:scale-105 transition transform animate-slideUp">
-          <img src="public/images/skills.png" class="h-20 mx-auto mb-4">
-          <h4 class="font-bold">Life Skills</h4>
-          <p class="text-sm text-gray-600 mt-2">Learn teamwork, problem-solving & creativity.</p>
-          <a href="#" class="text-orange-600 font-bold mt-2 inline-block">Start →</a>
+          <img src="public/images/skill.png" class="h-20 mx-auto mb-4">
+          <h4 class="font-bold" data-translate-key="course4Title">Life Skills</h4>
+          <p class="text-sm text-gray-600 mt-2" data-translate-key="course4Text">Learn teamwork, problem-solving & creativity.</p>
+          <a href="#" class="text-orange-600 font-bold mt-2 inline-block" data-translate-key="courseCta">Start →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Policy -->
   <section id="policy" class="py-20 bg-gray-100">
     <div class="max-w-6xl mx-auto text-center px-6 animate-slideUp">
-      <h3 class="text-3xl font-bold text-green-700">Our Policy</h3>
-      <p class="mt-4 text-gray-600 text-lg">We provide a safe, child-friendly environment. No personal data is shared, and content is designed to be inclusive & culturally relevant.</p>
+      <h3 class="text-3xl font-bold text-green-700" data-translate-key="policyTitle">Our Policy</h3>
+      <p class="mt-4 text-gray-600 text-lg" data-translate-key="policyText">We provide a safe, child-friendly environment. No personal data is shared, and content is designed to be inclusive & culturally relevant.</p>
     </div>
   </section>
 
-  <!-- Contact -->
   <section id="contact" class="py-20 bg-white">
     <div class="max-w-4xl mx-auto text-center px-6 animate-slideUp">
-      <h3 class="text-3xl font-bold text-green-700">Contact Us</h3>
+      <h3 class="text-3xl font-bold text-green-700" data-translate-key="contactTitle">Contact Us</h3>
       <form id="contactForm" class="mt-6 grid grid-cols-1 gap-4">
-        <input type="text" placeholder="Your Name" class="p-3 border rounded-lg focus:ring-2 focus:ring-orange-400" />
-        <input type="email" placeholder="Your Email" class="p-3 border rounded-lg focus:ring-2 focus:ring-orange-400" />
-        <textarea placeholder="Your Message" rows="4" class="p-3 border rounded-lg focus:ring-2 focus:ring-orange-400"></textarea>
-        <button type="submit" class="bg-orange-500 text-white py-3 rounded-lg shadow hover:bg-orange-600">Send Message</button>
+        <input type="text" data-translate-key-placeholder="contactNamePlaceholder" placeholder="Your Name" class="p-3 border rounded-lg focus:ring-2 focus:ring-orange-400" />
+        <input type="email" data-translate-key-placeholder="contactEmailPlaceholder" placeholder="Your Email" class="p-3 border rounded-lg focus:ring-2 focus:ring-orange-400" />
+        <textarea data-translate-key-placeholder="contactMessagePlaceholder" placeholder="Your Message" rows="4" class="p-3 border rounded-lg focus:ring-2 focus:ring-orange-400"></textarea>
+        <button type="submit" class="bg-orange-500 text-white py-3 rounded-lg shadow hover:bg-orange-600" data-translate-key="contactSendButton">Send Message</button>
       </form>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="bg-gradient-to-r from-green-800 to-green-600 text-white py-6 text-center">
-    <p>© 2025 GRAMSIKSHA. All rights reserved.</p>
+    <p data-translate-key="footerRights">© 2025 GRAMSIKSHA. All rights reserved.</p>
     <div class="mt-2 space-x-4">
-      <a href="#policy" class="hover:text-orange-300">Privacy Policy</a>
-      <a href="#contact" class="hover:text-orange-300">Contact</a>
+      <a href="#policy" class="hover:text-orange-300" data-translate-key="footerPolicyLink">Privacy Policy</a>
+      <a href="#contact" class="hover:text-orange-300" data-translate-key="footerContactLink">Contact</a>
     </div>
   </footer>
 
-  <!-- JS -->
   <script src="public/js/main.js"></script>
+  <script src="public/js/language.js"></script>
 </body>
 </html>

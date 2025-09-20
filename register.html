@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - GRAMSIKSHA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 flex items-center justify-center h-screen">
+
+  <div class="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-lg">
+    <div class="text-center">
+      <h1 class="text-3xl font-bold text-green-700">Create Your Account</h1>
+      <p class="text-gray-500">Join GRAMSIKSHA to start learning!</p>
+    </div>
+    
+    <form id="registrationForm" class="mt-6 grid grid-cols-1 gap-4">
+      <input type="text" placeholder="Your Name" class="p-3 border rounded-lg focus:ring-2 focus:ring-orange-400" required />
+      <input type="email" placeholder="Your Email" class="p-3 border rounded-lg focus:ring-2 focus:ring-orange-400" required />
+      <input type="password" placeholder="Create Password" class="p-3 border rounded-lg focus:ring-2 focus:ring-orange-400" required />
+      
+      <button type="submit" class="bg-green-600 text-white py-3 rounded-lg shadow hover:bg-green-700 font-semibold">
+        Register
+      </button>
+    </form>
+
+    <p class="text-center text-sm text-gray-600">
+      Already have an account? 
+      <a href="login.html" class="font-medium text-orange-600 hover:underline">Log in here</a>.
+    </p>
+  </div>
+
+  <script>
+    // Find the registration form by its ID
+    const form = document.getElementById('registrationForm');
+
+    // Add an event listener that waits for the form to be submitted
+    form.addEventListener('submit', function(event) {
+      // Prevent the form's default submission behavior
+      event.preventDefault(); 
+      
+      // Optional: You can show a success message
+      alert('Registration successful! Taking you to the courses...');
+      
+      // Redirect the user to the courses.html page
+      window.location.href = 'courses.html'; 
+    });
+  </script>
+
+</body>
+</html>

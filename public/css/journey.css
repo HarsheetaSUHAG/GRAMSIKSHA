@@ -1,0 +1,101 @@
+/* Main container for the journey map */
+#journey-map {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../images/farm-path.png'); /* Create a fun background image with a path */
+  background-size: cover;
+  background-position: center;
+}
+
+.map-title {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+
+/* Styling for each stop on the journey */
+.journey-stop {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: #f97316; /* Orange color */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: 4px solid white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Styling for the current, clickable stop */
+.journey-stop.active {
+  cursor: pointer;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px 5px #fde047; /* Yellow glow */
+}
+.journey-stop.active:hover {
+  transform: scale(1.2);
+}
+
+/* Styling for completed stops */
+.journey-stop.completed {
+  background-color: #22c55e; /* Green color */
+  cursor: default;
+}
+.journey-stop.completed::before {
+  content: '✅';
+  font-size: 2rem;
+  color: white;
+}
+
+/* Styling for locked, unclickable stops */
+.journey-stop.locked {
+  background-color: #9ca3af; /* Gray color */
+  cursor: not-allowed;
+  filter: grayscale(80%);
+}
+
+/* Modal styles for the quiz and badge pop-ups */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Quiz radio button styles */
+.quiz-option {
+  display: block;
+  padding: 0.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.quiz-option:hover {
+  border-color: #f97316;
+}

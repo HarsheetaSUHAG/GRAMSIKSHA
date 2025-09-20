@@ -1,14 +1,12 @@
 // Navbar background change on scroll
 window.addEventListener("scroll", () => {
   const navbar = document.getElementById("navbar");
-  if (window.scrollY > 50) {
-    navbar.classList.remove("bg-transparent");
-    navbar.classList.add("bg-white", "shadow");
-    navbar.querySelectorAll("ul li a").forEach(link => link.classList.add("text-gray-700"));
-  } else {
-    navbar.classList.add("bg-transparent");
-    navbar.classList.remove("bg-white", "shadow");
-    navbar.querySelectorAll("ul li a").forEach(link => link.classList.remove("text-gray-700"));
+  if (navbar) {
+    if (window.scrollY > 50) {
+      navbar.classList.add("shadow-md", "bg-white/90", "backdrop-blur-md");
+    } else {
+      navbar.classList.remove("shadow-md", "bg-white/90", "backdrop-blur-md");
+    }
   }
 });
 
@@ -27,10 +25,8 @@ elements.forEach(el => {
   observer.observe(el);
 });
 
-// Contact form confetti effect
+// Contact form submit listener
 document.getElementById("contactForm").addEventListener("submit", function(e) {
   e.preventDefault();
   alert("🎉 Message Sent! Thank you for contacting us.");
-  // You can integrate email backend later
 });
-

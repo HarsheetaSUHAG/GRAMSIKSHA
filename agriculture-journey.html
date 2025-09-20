@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agriculture Journey - GRAMSIKSHA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="public/css/journey.css"> </head>
+<body class="bg-green-50 overflow-hidden">
+
+  <div id="journey-map">
+    <h1 class="map-title">Your Farming Adventure! 🌱</h1>
+    
+    <div id="stop-1" class="journey-stop active" style="top: 20%; left: 15%;">1</div>
+    <div id="stop-2" class="journey-stop locked" style="top: 45%; left: 35%;">2</div>
+    <div id="stop-3" class="journey-stop locked" style="top: 30%; left: 60%;">3</div>
+    <div id="stop-4" class="journey-stop locked" style="top: 60%; left: 80%;">4</div>
+  </div>
+
+  <div id="quiz-modal" class="modal-backdrop hidden">
+    <div class="modal-content">
+      <h2 id="quiz-title" class="text-2xl font-bold text-green-700 mb-4">Quiz Time!</h2>
+      <p id="quiz-question" class="mb-4">This is where the quiz question will go.</p>
+      <form id="quiz-form">
+        <div id="quiz-options" class="space-y-2">
+          </div>
+        <button type="submit" class="mt-6 bg-orange-500 text-white px-6 py-2 rounded-lg shadow hover:bg-orange-600">Check Answer</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="badge-modal" class="modal-backdrop hidden">
+    <div class="modal-content text-center">
+      <h2 class="text-3xl font-bold text-yellow-500">You did it!</h2>
+      <img src="public/images/seed-badge.png" alt="Seed Badge" class="w-48 h-48 mx-auto my-4"> <p class="text-lg">You've earned the **First Seed Badge**!</p>
+      <button id="close-badge-modal" class="mt-6 bg-green-600 text-white px-6 py-2 rounded-lg shadow hover:bg-green-700">Continue Journey</button>
+    </div>
+  </div>
+
+  <script src="public/js/journey.js"></script> </body>
+</html>

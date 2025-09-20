@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Gramshiksha</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <!-- Login Card -->
+  <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+    <!-- Logo + Title -->
+    <div class="flex flex-col items-center mb-6">
+      <img src="public/images/image.png" alt="Logo" class="h-16 mb-2">
+      <h1 class="text-2xl font-bold text-green-700">Welcome Back</h1>
+      <p class="text-gray-500 text-sm">Login to continue your learning journey</p>
+    </div>
+
+    <!-- Form -->
+    <form id="loginForm" action="login_process.php" method="POST" class="space-y-4">
+      <div>
+        <label for="email" class="block text-gray-700 font-semibold">Email</label>
+        <input type="email" id="email" name="email" required 
+               class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none">
+      </div>
+
+      <div>
+        <label for="password" class="block text-gray-700 font-semibold">Password</label>
+        <input type="password" id="password" name="password" required 
+               class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none">
+      </div>
+
+      <!-- Remember Me + Forgot Password -->
+      <div class="flex items-center justify-between text-sm text-gray-600">
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" name="remember" class="h-4 w-4 text-orange-500">
+          <span>Remember me</span>
+        </label>
+        <a href="#" class="text-orange-500 hover:underline">Forgot Password?</a>
+      </div>
+
+      <button type="submit" 
+              class="w-full bg-orange-500 text-white py-2 rounded-lg shadow hover:bg-orange-600 transition">
+        Login
+      </button>
+    </form>
+
+    <!-- Register Redirect -->
+    <p class="text-center text-gray-600 text-sm mt-4">
+      Don’t have an account? 
+      <a href="register.html" class="text-green-600 hover:underline">Register</a>
+    </p>
+  </div>
+
+  <!-- JavaScript Validation -->
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      // Email validation regex
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+      if (!email.match(emailPattern)) {
+        alert("Please enter a valid email address.");
+        event.preventDefault();
+        return;
+      }
+
+      if (password.length < 6) {
+        alert("Password must be at least 6 characters long.");
+        event.preventDefault();
+        return;
+      }
+    });
+  </script>
+
+</body>
+</html>
