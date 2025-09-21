@@ -21,20 +21,40 @@
         <a href="#home" class="hover:text-orange-500" data-translate-key="navHome">Home</a>
         <a href="#about" class="hover:text-orange-500" data-translate-key="navAbout">About Us</a>
         <a href="#whatsnew" class="hover:text-orange-500" data-translate-key="navWhatsNew">What's New</a>
-<a href="courses.html" class="hover:text-orange-500" data-translate-key="navCourses">Courses</a>        <a href="#policy" class="hover:text-orange-500" data-translate-key="navPolicy">Policy</a>
+        <a href="courses.html" class="hover:text-orange-500" data-translate-key="navCourses">Courses</a>
+        <a href="#policy" class="hover:text-orange-500" data-translate-key="navPolicy">Policy</a>
         <a href="#contact" class="hover:text-orange-500" data-translate-key="navContact">Contact</a>
       </div>
 
       <div class="flex items-center space-x-4">
-        <a href="register.html" class="bg-green-600 text-white px-4 py-2 rounded-lg shadow hover:bg-green-700" data-translate-key="btnRegister">
-          Register
-        </a>
-        <a href="login.html" class="bg-orange-500 text-white px-4 py-2 rounded-lg shadow hover:bg-orange-600" data-translate-key="btnLogin">
-          Login
-        </a>
-        <button id="lang-switcher" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg shadow hover:bg-gray-300 font-semibold" data-translate-key="langSwitcher">
-          हिंदी
-        </button>
+          <a href="register.html" id="register-btn" class="bg-green-600 text-white px-4 py-2 rounded-lg shadow hover:bg-green-700">Register</a>
+          <a href="login.html" id="login-btn" class="bg-orange-500 text-white px-4 py-2 rounded-lg shadow hover:bg-orange-600">Login</a>
+          
+          <button id="lang-switcher" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg shadow hover:bg-gray-300 font-semibold">
+            हिंदी
+          </button>
+  
+          <div id="user-menu-container" class="hidden relative">
+              <button id="profile-button" class="flex items-center space-x-2">
+                  <div class="w-10 h-10 rounded-full bg-green-700 flex items-center justify-center text-white font-bold border-2 border-white">
+                      AR </div>
+                  <span class="font-semibold text-gray-700 hidden md:block">Ananya</span> </button>
+  
+              <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
+                  <div class="px-4 py-3 border-b">
+                      <p class="text-sm text-gray-800 font-semibold">Ananya Reddy</p>
+                      <p class="text-xs text-gray-500">Grade: 5th</p>
+                  </div>
+                  <div class="py-1">
+                      <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
+                      <a href="profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Profile</a>
+                      <a href="settings.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                  </div>
+                  <div class="py-1 border-t">
+                      <a href="#" id="logout-btn" class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">Logout</a>
+                  </div>
+              </div>
+          </div>
       </div>
     </div>
   </nav>
@@ -45,9 +65,9 @@
     <div class="relative z-10 px-6 animate-fadeIn">
       <h2 class="text-4xl md:text-6xl font-extrabold drop-shadow-lg" data-translate-key="heroTitle">Learning Made Simple for Villages 🌱</h2>
       <p class="mt-4 text-lg md:text-xl text-gray-200" data-translate-key="heroSubtitle">Fun, gamified education for rural kids aged 6–12, in Hindi & English.</p>
-      <a href="register.html" class="mt-6 inline-block bg-orange-500 text-white px-6 py-3 rounded-lg shadow hover:bg-orange-600 transition-transform transform hover:scale-105" data-translate-key="heroCta">
-  Start Learning →
-</a>
+      <a href="courses.html" class="mt-6 inline-block bg-orange-500 text-white px-6 py-3 rounded-lg shadow hover:bg-orange-600 transition-transform transform hover:scale-105" data-translate-key="heroCta">
+        Start Learning →
+      </a>
     </div>
   </section>
 
@@ -58,69 +78,50 @@
     </div>
   </section>
 
-<!-- ... code for About Us section ends here ... -->
-
-<section id="whatsnew" class="py-20 bg-gray-100">
+  <section id="whatsnew" class="py-20 bg-gray-100">
     <div class="max-w-6xl mx-auto px-6">
         <h2 class="text-3xl font-bold text-center text-green-700 mb-12" data-translate-key="featuresTitle">
             What’s Different in Us?
         </h2>
-
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      
             <div class="relative rounded-2xl p-6 shadow-lg bg-white/30 backdrop-blur-lg border border-transparent hover:scale-105 transition duration-300"
                  style="border-image: linear-gradient(to right, #22c55e, #f97316) 1;">
-                <div class="flex items-center justify-center w-14 h-14 bg-green-100 rounded-full mx-auto mb-4 text-2xl">
-                    🌱
-                </div>
+                <div class="flex items-center justify-center w-14 h-14 bg-green-100 rounded-full mx-auto mb-4 text-2xl">🌱</div>
                 <h3 class="text-xl font-semibold text-center mb-2" data-translate-key="feature1Title">Localized Learning</h3>
                 <p class="text-gray-700 text-center" data-translate-key="feature1Text">Hindi & English support for rural kids.</p>
             </div>
-
             <div class="relative rounded-2xl p-6 shadow-lg bg-white/30 backdrop-blur-lg border border-transparent hover:scale-105 transition duration-300"
                  style="border-image: linear-gradient(to right, #3b82f6, #22c55e) 1;">
-                <div class="flex items-center justify-center w-14 h-14 bg-blue-100 rounded-full mx-auto mb-4 text-2xl">
-                    🎮
-                </div>
+                <div class="flex items-center justify-center w-14 h-14 bg-blue-100 rounded-full mx-auto mb-4 text-2xl">🎮</div>
                 <h3 class="text-xl font-semibold text-center mb-2" data-translate-key="feature2Title">Gamified Lessons</h3>
                 <p class="text-gray-700 text-center" data-translate-key="feature2Text">Quizzes, games, and interactive missions.</p>
             </div>
-
             <div class="relative rounded-2xl p-6 shadow-lg bg-white/30 backdrop-blur-lg border border-transparent hover:scale-105 transition duration-300"
                  style="border-image: linear-gradient(to right, #f59e0b, #22c55e) 1;">
-                <div class="flex items-center justify-center w-14 h-14 bg-yellow-100 rounded-full mx-auto mb-4 text-2xl">
-                    🌾
-                </div>
+                <div class="flex items-center justify-center w-14 h-14 bg-yellow-100 rounded-full mx-auto mb-4 text-2xl">🌾</div>
                 <h3 class="text-xl font-semibold text-center mb-2" data-translate-key="feature3Title">Rural Context</h3>
                 <p class="text-gray-700 text-center" data-translate-key="feature3Text">Agriculture & life skill–based content.</p>
             </div>
-
             <div class="relative rounded-2xl p-6 shadow-lg bg-white/30 backdrop-blur-lg border border-transparent hover:scale-105 transition duration-300"
                  style="border-image: linear-gradient(to right, #ec4899, #f97316) 1;">
-                <div class="flex items-center justify-center w-14 h-14 bg-pink-100 rounded-full mx-auto mb-4 text-2xl">
-                    🏅
-                </div>
+                <div class="flex items-center justify-center w-14 h-14 bg-pink-100 rounded-full mx-auto mb-4 text-2xl">🏅</div>
                 <h3 class="text-xl font-semibold text-center mb-2" data-translate-key="feature4Title">Badges & Rewards</h3>
                 <p class="text-gray-700 text-center" data-translate-key="feature4Text">Motivation with achievements & badges.</p>
             </div>
         </div>
     </div>
-</section>
-
-<!-- ... code for Our Courses section starts here ... -->
-
+  </section>
 
   <section id="courses" class="py-20 bg-white">
     <div class="max-w-6xl mx-auto text-center px-6">
       <h3 class="text-3xl font-bold text-green-700 mb-8" data-translate-key="coursesTitle">Our Courses</h3>
       <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div class="bg-yellow-100 p-6 rounded-xl shadow-lg hover:scale-105 transition transform animate-slideUp">
-  <img src="public/images/agriculture.png" class="h-20 mx-auto mb-4">
-  <h4 class="font-bold" data-translate-key="course1Title">Agriculture Basics</h4>
-  <p class="text-sm text-gray-600 mt-2" data-translate-key="course1Text">Learn how seeds grow, farming tools, and crops.</p>
-
-  <a href="agriculture.html" class="text-orange-600 font-bold mt-2 inline-block" data-translate-key="courseCta">Start →</a>
-</div>
+          <img src="public/images/agriculture.png" class="h-20 mx-auto mb-4">
+          <h4 class="font-bold" data-translate-key="course1Title">Agriculture Basics</h4>
+          <p class="text-sm text-gray-600 mt-2" data-translate-key="course1Text">Learn how seeds grow, farming tools, and crops.</p>
+          <a href="agriculture.html" class="text-orange-600 font-bold mt-2 inline-block" data-translate-key="courseCta">Start →</a>
+        </div>
         <div class="bg-green-100 p-6 rounded-xl shadow-lg hover:scale-105 transition transform animate-slideUp">
           <img src="public/images/literature.png" class="h-20 mx-auto mb-4">
           <h4 class="font-bold" data-translate-key="course2Title">Literacy</h4>
@@ -172,5 +173,59 @@
 
   <script src="public/js/main.js"></script>
   <script src="public/js/language.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- Get all the elements ---
+        const registerBtn = document.getElementById('register-btn');
+        const loginBtn = document.getElementById('login-btn');
+        
+        // Logged-in elements
+        const userMenuContainer = document.getElementById('user-menu-container');
+        const profileButton = document.getElementById('profile-button');
+        const profileDropdown = document.getElementById('profile-dropdown');
+        const logoutBtn = document.getElementById('logout-btn');
+
+        // --- Check login status ---
+        const userIsLoggedIn = sessionStorage.getItem('isLoggedIn');
+
+        if (userIsLoggedIn === 'true') {
+            // User IS logged in:
+            // 1. Hide Register/Login buttons
+            if (registerBtn) registerBtn.style.display = 'none';
+            if (loginBtn) loginBtn.style.display = 'none';
+            
+            // 2. Show the entire user menu container
+            if (userMenuContainer) userMenuContainer.style.display = 'block';
+        }
+
+        // --- Event Listeners for interactivity ---
+
+        // 1. Toggle dropdown when profile button is clicked
+        if (profileButton) {
+            profileButton.addEventListener('click', function(event) {
+                // This stops the 'window' click event from firing immediately
+                event.stopPropagation(); 
+                profileDropdown.classList.toggle('hidden');
+            });
+        }
+
+        // 2. Close dropdown if user clicks anywhere else on the page
+        window.addEventListener('click', function() {
+            if (profileDropdown && !profileDropdown.classList.contains('hidden')) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // 3. Handle logout
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function(event) {
+                event.preventDefault();
+                sessionStorage.removeItem('isLoggedIn');
+                window.location.reload();
+            });
+        }
+    });
+  </script>
 </body>
 </html>
