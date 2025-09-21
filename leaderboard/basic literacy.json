@@ -1,0 +1,65 @@
+{
+  "courseName": "Basic Literacy",
+  "leaderboard": [
+    {
+      "rank": 1,
+      "name": "Anika Singh",
+      "xp": 5400,
+      "avatar": "https://placehold.co/40x40/ec4899/ffffff?text=A"
+    },
+    {
+      "rank": 2,
+      "name": "Kabir Joshi",
+      "xp": 5210,
+      "avatar": "https://placehold.co/40x40/ef4444/ffffff?text=K"
+    },
+    {
+      "rank": 3,
+      "name": "Priya Kaur",
+      "xp": 5050,
+      "avatar": "https://placehold.co/40x40/f97316/ffffff?text=P"
+    },
+    {
+      "rank": 4,
+      "name": "Arjun Nair",
+      "xp": 4900,
+      "avatar": "https://placehold.co/40x40/d946ef/ffffff?text=A"
+    },
+    {
+      "rank": 5,
+      "name": "Meera Gupta",
+      "xp": 4750,
+      "avatar": "https://placehold.co/40x40/8b5cf6/ffffff?text=M"
+    },
+    {
+      "rank": 6,
+      "name": "Aarav Sharma",
+      "xp": 4600,
+      "avatar": "https://placehold.co/40x40/22c55e/ffffff?text=A"
+    },
+    {
+      "rank": 7,
+      "name": "Rohan Verma",
+      "xp": 4430,
+      "avatar": "https://placehold.co/40x40/3b82f6/ffffff?text=R"
+    },
+    {
+      "rank": 8,
+      "name": "Diya Kumar",
+      "xp": 4280,
+      "avatar": "https://placehold.co/40x40/6366f1/ffffff?text=D"
+    },
+    {
+      "rank": 9,
+      "name": "Vikram Reddy",
+      "xp": 4100,
+      "avatar": "https://placehold.co/40x40/f59e0b/ffffff?text=V"
+    },
+    {
+      "rank": 10,
+      "name": "Ishaan Patel",
+      "xp": 3950,
+      "avatar": "https://placehold.co/40x40/14b8a6/ffffff?text=I"
+    }
+  ]
+}

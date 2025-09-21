@@ -1,0 +1,65 @@
+{
+  "courseName": "Art & Creativity",
+  "leaderboard": [
+    {
+      "rank": 1,
+      "name": "Priya Kaur",
+      "xp": 5300,
+      "avatar": "https://placehold.co/40x40/f97316/ffffff?text=P"
+    },
+    {
+      "rank": 2,
+      "name": "Diya Kumar",
+      "xp": 5120,
+      "avatar": "https://placehold.co/40x40/6366f1/ffffff?text=D"
+    },
+    {
+      "rank": 3,
+      "name": "Arjun Nair",
+      "xp": 4980,
+      "avatar": "https://placehold.co/40x40/d946ef/ffffff?text=A"
+    },
+    {
+      "rank": 4,
+      "name": "Aarav Sharma",
+      "xp": 4810,
+      "avatar": "https://placehold.co/40x40/22c55e/ffffff?text=A"
+    },
+    {
+      "rank": 5,
+      "name": "Kabir Joshi",
+      "xp": 4650,
+      "avatar": "https://placehold.co/40x40/ef4444/ffffff?text=K"
+    },
+    {
+      "rank": 6,
+      "name": "Anika Singh",
+      "xp": 4500,
+      "avatar": "https://placehold.co/40x40/ec4899/ffffff?text=A"
+    },
+    {
+      "rank": 7,
+      "name": "Ishaan Patel",
+      "xp": 4320,
+      "avatar": "https://placehold.co/40x40/14b8a6/ffffff?text=I"
+    },
+    {
+      "rank": 8,
+      "name": "Rohan Verma",
+      "xp": 4180,
+      "avatar": "https://placehold.co/40x40/3b82f6/ffffff?text=R"
+    },
+    {
+      "rank": 9,
+      "name": "Meera Gupta",
+      "xp": 4010,
+      "avatar": "https://placehold.co/40x40/8b5cf6/ffffff?text=M"
+    },
+    {
+      "rank": 10,
+      "name": "Vikram Reddy",
+      "xp": 3850,
+      "avatar": "https://placehold.co/40x40/f59e0b/ffffff?text=V"
+    }
+  ]
+}
