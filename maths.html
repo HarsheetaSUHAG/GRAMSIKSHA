@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gamified Learning Platform</title>
+    <title>Fun with Math Adventure - GRAMSIKSHA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="public/css/math_2048.css">
@@ -14,9 +14,8 @@
         /* Custom styles for the pulsating animation on the mission markers */
         .mission-marker {
             animation: pulse 2s infinite;
-            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
         }
-
+        .journey-stop:hover { transform: scale(1.15); }
         @keyframes pulse {
             0% {
                 transform: scale(0.95);
@@ -41,7 +40,8 @@
         }
     </style>
 </head>
-<body class="bg-blue-100 flex flex-col items-center justify-center min-h-screen pt-20 p-4">
+<body class="bg-indigo-50">
+
     <nav class="bg-white/90 backdrop-blur-md shadow-md fixed top-0 left-0 w-full z-20">
       <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
         <div class="flex items-center space-x-2">
@@ -80,6 +80,7 @@
             <p id="modal-description" class="text-gray-600 mb-6"></p>
             <button id="close-modal" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Let's Go!</button>
         </div>
+        <button id="close-2048-btn" class="absolute top-4 right-4 text-3xl font-bold text-white">&times;</button>
     </div>
     <div id="game-2048-container" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
         <div class="container">

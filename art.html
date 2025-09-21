@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STEM Adventures - GRAMSIKSHA</title>
+    <title>Art & Creativity Adventure - GRAMSIKSHA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -43,10 +43,10 @@
         }
         .learning-module h3 { cursor: pointer; transition: color 0.2s; }
         .learning-module h3:hover { color: #f97316; }
-        .learning-module.active h3 { color: #115e59; font-weight: 700; } /* Dark Teal */
+        .learning-module.active h3 { color: #c026d3; font-weight: 700; } /* Fuchsia */
     </style>
 </head>
-<body class="bg-teal-50">
+<body class="bg-fuchsia-50">
 
     <nav class="bg-white/90 backdrop-blur-md shadow-md fixed top-0 left-0 w-full z-20">
       <div class="max-w-screen-2xl mx-auto px-6 py-3 flex justify-between items-center">
@@ -63,33 +63,33 @@
 
     <main class="w-full max-w-screen-2xl mx-auto pt-24 px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-8">
-            <h1 id="main-title" class="text-4xl md:text-5xl font-bold text-slate-800">STEM Adventures! 🔬</h1>
-            <p class="text-slate-600 mt-2">Explore the world of STEM on the left, then solve the challenges on the right.</p>
+            <h1 id="main-title" class="text-4xl md:text-5xl font-bold text-slate-800">Art & Creativity Adventure! 🎨</h1>
+            <p class="text-slate-600 mt-2">Learn about art on the left, then try the fun challenges on the right.</p>
         </div>
 
         <div class="flex flex-col lg:flex-row gap-8 items-start">
             
             <!-- Left Column: Learning Module -->
             <div class="w-full lg:w-2/5 bg-white rounded-2xl shadow-lg p-6 sticky top-24">
-                <h2 class="text-3xl font-bold text-teal-800 mb-4 border-b-2 border-teal-200 pb-2">🧪 Learning Zone</h2>
+                <h2 class="text-3xl font-bold text-fuchsia-800 mb-4 border-b-2 border-fuchsia-200 pb-2">🖌️ Learning Zone</h2>
                 <div id="learning-modules-container" class="space-y-4">
                     <div class="learning-module" data-module="1">
-                        <h3 class="font-semibold text-xl text-gray-700">Module 1: Science - The Living World</h3>
+                        <h3 class="font-semibold text-xl text-gray-700">Module 1: The Magic of Colors</h3>
                     </div>
                     <div class="learning-module" data-module="2">
-                        <h3 class="font-semibold text-xl text-gray-700">Module 2: Technology - Simple Machines</h3>
+                        <h3 class="font-semibold text-xl text-gray-700">Module 2: Fun with Shapes and Lines</h3>
                     </div>
                     <div class="learning-module" data-module="3">
-                        <h3 class="font-semibold text-xl text-gray-700">Module 3: Engineering - Building Strong</h3>
+                        <h3 class="font-semibold text-xl text-gray-700">Module 3: Drawing Everyday Things</h3>
                     </div>
                     <div class="learning-module" data-module="4">
-                        <h3 class="font-semibold text-xl text-gray-700">Module 4: Math - Patterns in Nature</h3>
+                        <h3 class="font-semibold text-xl text-gray-700">Module 4: Indian Folk Art - Rangoli</h3>
                     </div>
                      <div class="learning-module" data-module="5">
-                        <h3 class="font-semibold text-xl text-gray-700">Module 5: Science - The Water Cycle</h3>
+                        <h3 class="font-semibold text-xl text-gray-700">Module 5: Making Music with Rhythm</h3>
                     </div>
                 </div>
-                <div id="learning-content-display" class="mt-6 border-t-2 border-teal-200 pt-4">
+                <div id="learning-content-display" class="mt-6 border-t-2 border-fuchsia-200 pt-4">
                     <p class="text-gray-500">Click a module above to learn about it!</p>
                 </div>
             </div>
@@ -97,7 +97,7 @@
             <!-- Right Column: Gamified Map -->
             <div class="w-full lg:w-3/5">
                 <div id="game-map-container" class="relative w-full" style="aspect-ratio: 16 / 11;">
-                    <img src="public\images\stembg.png" alt="A cartoon landscape with science and tech elements for a STEM adventure" class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl">
+                    <img src="public\images\arbg.png" alt="A cartoon landscape with art supplies for a creativity adventure" class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl">
                     <div data-mission="1" class="journey-stop" style="top: 75%; left: 10%;">1</div>
                     <div data-mission="2" class="journey-stop" style="top: 40%; left: 25%;">2</div>
                     <div data-mission="3" class="journey-stop" style="top: 70%; left: 45%;">3</div>
@@ -111,7 +111,7 @@
     <!-- Quiz Modal -->
     <div id="quiz-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
         <div class="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full">
-            <h2 id="quiz-title" class="text-2xl font-bold text-teal-700 mb-4">STEM Challenge!</h2>
+            <h2 id="quiz-title" class="text-2xl font-bold text-fuchsia-700 mb-4">Creative Challenge!</h2>
             <p id="quiz-question" class="mb-4 text-lg text-gray-700"></p>
             <form id="quiz-form">
                 <div id="quiz-options" class="space-y-3"></div>
@@ -124,9 +124,9 @@
     <div id="fun-fact-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
         <div class="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full text-center">
             <img src="public\images\light-bulb.png" alt="Fun Fact" class="w-20 h-20 mx-auto mb-4">
-            <h2 class="text-2xl font-bold text-blue-600 mb-2">Did you know?</h2>
+            <h2 class="text-2xl font-bold text-blue-600 mb-2">Creative Tip!</h2>
             <p id="fun-fact-text" class="text-gray-700 text-lg"></p>
-            <button id="close-fun-fact-modal" class="mt-6 bg-teal-500 text-white px-6 py-2 rounded-lg shadow hover:bg-teal-600">Continue!</button>
+            <button id="close-fun-fact-modal" class="mt-6 bg-fuchsia-500 text-white px-6 py-2 rounded-lg shadow hover:bg-fuchsia-600">Continue!</button>
         </div>
     </div>
     
@@ -134,8 +134,8 @@
     <div id="badge-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
         <div class="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full text-center">
              <h2 class="text-3xl font-bold text-yellow-500 mb-4">Adventure Complete! 🥳</h2>
-             <img src="public\images\Google_AI_Studio_2025-09-21T06_29_43.028Z.png" alt="STEM Explorer Badge" class="w-40 h-40 mx-auto my-4">
-             <p class="text-lg text-gray-700 mb-6">You've earned the <b>STEM Explorer Badge</b>!</p>
+             <img src="public\images\Google_AI_Studio_2025-09-21T06_36_14.519Z.png" alt="Creative Artist Badge" class="w-40 h-40 mx-auto my-4">
+             <p class="text-lg text-gray-700 mb-6">You've earned the <b>Creative Artist Badge</b>!</p>
              <a href="index.html#courses" class="bg-green-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-700">Back to Courses</a>
         </div>
     </div>
@@ -143,7 +143,7 @@
      <!-- Results Modal -->
     <div id="results-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
         <div class="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full">
-            <h2 class="text-2xl font-bold text-teal-700 mb-4">Your Progress Report</h2>
+            <h2 class="text-2xl font-bold text-fuchsia-700 mb-4">Your Progress Report</h2>
             <div class="space-y-3 text-lg">
                 <div><span class="font-semibold">Challenges Solved:</span> <span id="stops-completed-results">0 / 5</span></div>
                 <div><span class="font-semibold">Badges Earned:</span> <span id="badges-earned-results">None yet!</span></div>
@@ -179,67 +179,67 @@
         1: {
             content: `
                 <div class="mb-4">
-                    <h4 class="text-2xl font-bold text-gray-800">What makes something "living"?</h4>
-                    <p class="text-lg text-gray-600">Living things, like plants and animals, can grow, move, and reproduce (make babies). Plants make their own food using sunlight, in a process called photosynthesis.</p>
+                    <h4 class="text-2xl font-bold text-gray-800">Primary Colors</h4>
+                    <p class="text-lg text-gray-600">The three primary colors are <b>Red, Yellow, and Blue</b>. They are special because you cannot make them by mixing other colors. But you can mix them to make all other colors!</p>
                 </div>
                 <div>
                     <h4 class="text-2xl font-bold text-gray-800">Example</h4>
-                    <p class="text-lg text-gray-600">A mango tree is a <b>living thing</b>. It grows from a seed, produces mangoes, and uses its leaves to soak up the sun.</p>
+                    <p class="text-lg text-gray-600">If you mix <b>yellow</b> and <b>blue</b> paint, you will create the color <b>green</b>.</p>
                 </div>`
         },
         2: {
             content: `
                 <div class="mb-4">
-                    <h4 class="text-2xl font-bold text-gray-800">What are Simple Machines?</h4>
-                    <p class="text-lg text-gray-600">Simple machines are tools that make work easier for us. They help us lift heavy things or move objects with less effort.</p>
+                    <h4 class="text-2xl font-bold text-gray-800">What are Shapes?</h4>
+                    <p class="text-lg text-gray-600">Shapes are the forms of objects. Some basic shapes are circles (like the sun), squares (like a biscuit), and triangles (like a samosa).</p>
                 </div>
                 <div>
-                     <h4 class="text-2xl font-bold text-gray-800">Example: The Lever</h4>
-                    <p class="text-lg text-gray-600">A see-saw is a type of <b>lever</b>. When you push down on one side, the other side goes up. This simple idea helps lift heavy weights easily.</p>
+                     <h4 class="text-2xl font-bold text-gray-800">What are Lines?</h4>
+                    <p class="text-lg text-gray-600">Lines can be straight, curvy, wavy, or zigzag. Artists use different kinds of lines to make their drawings interesting.</p>
                 </div>`
         },
         3: {
             content: `
                  <div class="mb-4">
-                    <h4 class="text-2xl font-bold text-gray-800">Building Strong Structures</h4>
-                    <p class="text-lg text-gray-600">Engineers use strong shapes to build things like bridges and houses. The way a structure is designed helps it to hold up heavy loads without breaking.</p>
+                    <h4 class="text-2xl font-bold text-gray-800">Drawing from Shapes</h4>
+                    <p class="text-lg text-gray-600">You can draw almost anything by starting with simple shapes. A house can start with a big square and a triangle on top for the roof.</p>
                 </div>
                 <div>
-                    <h4 class="text-2xl font-bold text-gray-800">Example: The Triangle</h4>
-                    <p class="text-lg text-gray-600">The <b>triangle</b> is the strongest shape. It distributes weight evenly. You can see triangles in the design of bridges and roof supports.</p>
+                    <h4 class="text-2xl font-bold text-gray-800">Example</h4>
+                    <p class="text-lg text-gray-600">To draw a simple person, you can use a <b>circle</b> for the head, a rectangle for the body, and straight lines for the arms and legs.</p>
                 </div>`
         },
         4: {
             content: `
                  <div class="mb-4">
-                    <h4 class="text-2xl font-bold text-gray-800">Finding Patterns</h4>
-                    <p class="text-lg text-gray-600">Math isn't just numbers! It's also about finding patterns. Nature is full of beautiful patterns, from the petals on a flower to the stripes on a tiger.</p>
+                    <h4 class="text-2xl font-bold text-gray-800">What is Rangoli?</h4>
+                    <p class="text-lg text-gray-600">Rangoli is a beautiful and colorful art form from India. It is made on the floor, usually during festivals like Diwali, using materials like colored rice, flour, sand, or flower petals.</p>
                 </div>
                 <div>
-                    <h4 class="text-2xl font-bold text-gray-800">Example: Honeycombs</h4>
-                    <p class="text-lg text-gray-600">Bees build their honeycombs using <b>hexagons</b> (a shape with six sides). This pattern is super strong and lets them store the most honey using the least amount of wax.</p>
+                    <h4 class="text-2xl font-bold text-gray-800">Patterns in Rangoli</h4>
+                    <p class="text-lg text-gray-600">Rangoli designs often use geometric patterns, like circles and flowers, and are usually symmetrical, meaning they are the same on both sides.</p>
                 </div>`
         },
         5: {
              content: `
                  <div class="mb-4">
-                    <h4 class="text-2xl font-bold text-gray-800">What is the Water Cycle?</h4>
-                    <p class="text-lg text-gray-600">The water cycle is how water moves all around the Earth. It evaporates from rivers and lakes (turns into vapor), forms clouds, and then falls back down as rain.</p>
+                    <h4 class="text-2xl font-bold text-gray-800">What is Rhythm?</h4>
+                    <p class="text-lg text-gray-600">Rhythm is a repeated pattern of sound. It's the part of music that makes you want to tap your feet or clap your hands. You can create rhythm without any instruments!</p>
                 </div>
                 <div>
-                    <h4 class="text-2xl font-bold text-gray-800">Example: Rain</h4>
-                    <p class="text-lg text-gray-600">When clouds get full of water vapor, the water falls back to the ground. This is called <b>precipitation</b>, which we see as rain or snow.</p>
+                    <h4 class="text-2xl font-bold text-gray-800">Example</h4>
+                    <p class="text-lg text-gray-600">Clapping your hands in a steady "clap... clap-clap... clap... clap-clap" pattern creates a simple <b>rhythm</b>.</p>
                 </div>`
         }
     };
     
     // --- QUIZ AND FUN FACT DATA ---
     const quizData = {
-        1: { question: "What do plants use to make their own food?", options: ["Moonlight", "Soil", "Sunlight"], answer: "Sunlight", funFact: "A sunflower's head is actually made of thousands of tiny flowers all packed together!" },
-        2: { question: "A see-saw is an example of which simple machine?", options: ["A wheel", "A lever", "A screw"], answer: "A lever", funFact: "Even your arm works like a lever when you lift something!" },
-        3: { question: "What is the strongest shape for building things?", options: ["A square", "A circle", "A triangle"], answer: "A triangle", funFact: "The Eiffel Tower is built with thousands of strong triangles!" },
-        4: { question: "What shape do bees use to build honeycombs?", options: ["Hexagon", "Square", "Circle"], answer: "Hexagon", funFact: "Snowflakes are also based on a hexagon pattern!" },
-        5: { question: "What is it called when water falls from the clouds as rain?", options: ["Evaporation", "Precipitation", "Condensation"], answer: "Precipitation", funFact: "The water you drink today is the same water that dinosaurs drank millions of years ago!" }
+        1: { question: "If you mix Red and Yellow paint, what new color do you get?", options: ["Green", "Purple", "Orange"], answer: "Orange", funFact: "Long ago, people made purple dye from tiny sea snails. It was very expensive!" },
+        2: { question: "A cricket ball is which shape?", options: ["Square", "Circle", "Triangle"], answer: "Circle", funFact: "A circle has no corners at all!" },
+        3: { question: "What two shapes can you use to start drawing a simple house?", options: ["A circle and a line", "A square and a triangle", "Two circles"], answer: "A square and a triangle", funFact: "Looking for simple shapes in things around you is a great way to learn how to draw them." },
+        4: { question: "Where is Rangoli usually made?", options: ["On the wall", "On the floor", "On a paper"], answer: "On the floor", funFact: "Making Rangoli is a way to welcome guests and bring good luck to the home." },
+        5: { question: "Which of these is a good way to create a rhythm?", options: ["Staring at a wall", "Clapping your hands", "Whispering quietly"], answer: "Clapping your hands", funFact: "Your own heartbeat has a natural rhythm!" }
     };
 
     // --- FUNCTIONS ---
@@ -268,7 +268,7 @@
         data.options.forEach(option => {
             quizOptions.innerHTML += `
                 <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:bg-gray-100 cursor-pointer">
-                    <input type="radio" name="quiz" value="${option}" class="mr-3 h-5 w-5 text-teal-600 focus:ring-teal-500">
+                    <input type="radio" name="quiz" value="${option}" class="mr-3 h-5 w-5 text-fuchsia-600 focus:ring-fuchsia-500">
                     <span class="text-gray-800">${option}</span>
                 </label>`;
         });
@@ -299,14 +299,14 @@
             currentLevel++;
             updateJourneyStops();
         } else {
-            mainTitle.textContent = "STEM Adventure Complete!";
+            mainTitle.textContent = "Art & Creativity Adventure Complete!";
             badgeModal.classList.remove('hidden');
         }
     }
     
     function showResults() {
         document.getElementById('stops-completed-results').textContent = `${Math.min(currentLevel - 1, 5)} / 5`;
-        const badgeText = (currentLevel > 5) ? "STEM Explorer Badge! 🔬" : "None yet!";
+        const badgeText = (currentLevel > 5) ? "Creative Artist Badge! 🎨" : "None yet!";
         document.getElementById('badges-earned-results').textContent = badgeText;
         resultsModal.classList.remove('hidden');
     }
