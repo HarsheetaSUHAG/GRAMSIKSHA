@@ -3,48 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gamified Learning Platform</title>
+    <title>Fun with Math Adventure - GRAMSIKSHA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-        /* Custom styles for the pulsating animation on the mission markers */
-        .mission-marker {
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        .journey-stop {
+            position: absolute;
+            width: 3rem; height: 3rem;
+            background-color: #ef4444; /* red-500 */
+            color: white;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            border: 4px solid white;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
             animation: pulse 2s infinite;
-            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
         }
-
+        .journey-stop:hover { transform: scale(1.15); }
         @keyframes pulse {
-            0% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
-            }
-            70% {
-                transform: scale(1.1);
-                box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
-            }
-            100% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-            }
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
         }
-        
-        /* Ensure the container maintains aspect ratio */
-        .game-container {
-            width: 100%;
-            max-width: 1000px;
-            aspect-ratio: 4 / 3;
-            margin: auto;
+        .journey-stop.locked {
+            background-color: #9ca3af; /* gray-400 */
+            animation: none;
+            pointer-events: none;
+            cursor: not-allowed;
+            filter: grayscale(1);
         }
+        .journey-stop.completed {
+            background-color: #22c55e; /* green-500 */
+            animation: none;
+        }
+        .learning-module h3 { cursor: pointer; transition: color 0.2s; }
+        .learning-module h3:hover { color: #f97316; }
+        .learning-module.active h3 { color: #4338ca; font-weight: 700; }
     </style>
 </head>
-<body class="bg-blue-100 flex flex-col items-center justify-center min-h-screen pt-20 p-4">
+<body class="bg-indigo-50">
+
     <nav class="bg-white/90 backdrop-blur-md shadow-md fixed top-0 left-0 w-full z-20">
-      <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+      <div class="max-w-screen-2xl mx-auto px-6 py-3 flex justify-between items-center">
         <div class="flex items-center space-x-2">
-          <img src="public/images/image.png" alt="Logo" class="h-12">
+          <img src="https://placehold.co/100x48/e2e8f0/4a5568?text=Logo" alt="Logo" class="h-12">
           <h1 class="text-lg font-bold text-green-700">GRAMSIKSHA</h1>
         </div>
         <div class="flex items-center space-x-4">
@@ -54,114 +61,277 @@
       </div>
     </nav>
 
-    <div class="w-full max-w-5xl text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-slate-800 mb-4">Welcome to the Learning Adventure!</h1>
-        <p class="text-slate-600 mb-8">Click on a numbered mission to begin your journey.</p>
+    <main class="w-full max-w-screen-2xl mx-auto pt-24 px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-8">
+            <h1 id="main-title" class="text-4xl md:text-5xl font-bold text-slate-800">Fun with Math Adventure! 🧮</h1>
+            <p class="text-slate-600 mt-2">Learn about numbers on the left, then solve the puzzles on the right.</p>
+        </div>
 
-        <!-- Container for the image and markers -->
-        <div id="game-container" class="relative game-container">
-            <!-- The background image -->
-            <img src="public\images\Generated Image September 20, 2025 - 9_18PM.png" alt="A cartoon village with a path, representing a learning journey for kids." class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl">
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+            
+            <!-- Left Column: Learning Module -->
+            <div class="w-full lg:w-2/5 bg-white rounded-2xl shadow-lg p-6 sticky top-24">
+                <h2 class="text-3xl font-bold text-indigo-800 mb-4 border-b-2 border-indigo-200 pb-2">🔢 Learning Zone</h2>
+                <div id="learning-modules-container" class="space-y-4">
+                    <div class="learning-module" data-module="1">
+                        <h3 class="font-semibold text-xl text-gray-700">Module 1: Addition (+)</h3>
+                    </div>
+                    <div class="learning-module" data-module="2">
+                        <h3 class="font-semibold text-xl text-gray-700">Module 2: Subtraction (-)</h3>
+                    </div>
+                    <div class="learning-module" data-module="3">
+                        <h3 class="font-semibold text-xl text-gray-700">Module 3: Multiplication (×)</h3>
+                    </div>
+                    <div class="learning-module" data-module="4">
+                        <h3 class="font-semibold text-xl text-gray-700">Module 4: Division (÷)</h3>
+                    </div>
+                     <div class="learning-module" data-module="5">
+                        <h3 class="font-semibold text-xl text-gray-700">Module 5: Word Problems</h3>
+                    </div>
+                </div>
+                <div id="learning-content-display" class="mt-6 border-t-2 border-indigo-200 pt-4">
+                    <p class="text-gray-500">Click a module above to learn about it!</p>
+                </div>
+            </div>
 
-            <!-- Mission Markers -->
-            <!-- I've positioned these using percentages so they scale with the image size -->
-            <div data-mission="1" class="mission-marker absolute w-10 h-10 md:w-12 md:h-12 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-xl cursor-pointer border-4 border-white transition-transform duration-300 hover:scale-125" style="top: 75%; left: 15%;">1</div>
-            <div data-mission="2" class="mission-marker absolute w-10 h-10 md:w-12 md:h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl cursor-pointer border-4 border-white transition-transform duration-300 hover:scale-125" style="top: 50%; left: 48%;">2</div>
-            <div data-mission="3" class="mission-marker absolute w-10 h-10 md:w-12 md:h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-xl cursor-pointer border-4 border-white transition-transform duration-300 hover:scale-125" style="top: 65%; left: 78%;">3</div>
-            <div data-mission="4" class="mission-marker absolute w-10 h-10 md:w-12 md:h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-xl cursor-pointer border-4 border-white transition-transform duration-300 hover:scale-125" style="top: 25%; left: 35%;">4</div>
+            <!-- Right Column: Gamified Map -->
+            <div class="w-full lg:w-3/5">
+                <div id="game-map-container" class="relative w-full" style="aspect-ratio: 16 / 11;">
+                    <img src="public\images\Generated Image September 20, 2025 - 9_18PM.png" alt="A cartoon landscape with numbers and shapes for a math adventure" class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl">
+                    <div data-mission="1" class="journey-stop" style="top: 75%; left: 10%;">1</div>
+                    <div data-mission="2" class="journey-stop" style="top: 40%; left: 25%;">2</div>
+                    <div data-mission="3" class="journey-stop" style="top: 70%; left: 45%;">3</div>
+                    <div data-mission="4" class="journey-stop" style="top: 35%; left: 65%;">4</div>
+                    <div data-mission="5" class="journey-stop" style="top: 65%; left: 85%;">5</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Quiz Modal -->
+    <div id="quiz-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full">
+            <h2 id="quiz-title" class="text-2xl font-bold text-indigo-700 mb-4">Math Puzzle!</h2>
+            <p id="quiz-question" class="mb-4 text-lg text-gray-700"></p>
+            <form id="quiz-form">
+                <div id="quiz-options" class="space-y-3"></div>
+                <button type="submit" class="mt-6 w-full bg-orange-500 text-white px-6 py-2 rounded-lg shadow hover:bg-orange-600">Check Answer</button>
+            </form>
         </div>
     </div>
 
-    <!-- Mission Modal -->
-    <div id="mission-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50 transition-opacity duration-300">
-        <div id="modal-content" class="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full text-center transform scale-95 transition-transform duration-300">
-            <h2 id="modal-title" class="text-3xl font-bold text-gray-800 mb-4"></h2>
-            <p id="modal-description" class="text-gray-600 mb-6"></p>
-            <button id="close-modal" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Let's Go!</button>
+    <!-- Fun Fact Modal -->
+    <div id="fun-fact-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full text-center">
+            <img src="public\images\light-bulb.png" alt="Fun Fact" class="w-20 h-20 mx-auto mb-4">
+            <h2 class="text-2xl font-bold text-blue-600 mb-2">Math Fact!</h2>
+            <p id="fun-fact-text" class="text-gray-700 text-lg"></p>
+            <button id="close-fun-fact-modal" class="mt-6 bg-indigo-500 text-white px-6 py-2 rounded-lg shadow hover:bg-indigo-600">Continue!</button>
         </div>
     </div>
     
+    <!-- Badge Modal -->
+    <div id="badge-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full text-center">
+             <h2 class="text-3xl font-bold text-yellow-500 mb-4">Adventure Complete! 🥳</h2>
+             <img src="public\images\math-badge.png" alt="Math Whiz Badge" class="w-40 h-40 mx-auto my-4">
+             <p class="text-lg text-gray-700 mb-6">You've earned the <b>Math Whiz Badge</b>!</p>
+             <a href="index.html#courses" class="bg-green-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-700">Back to Courses</a>
+        </div>
+    </div>
+    
+     <!-- Results Modal -->
+    <div id="results-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full">
+            <h2 class="text-2xl font-bold text-indigo-700 mb-4">Your Progress Report</h2>
+            <div class="space-y-3 text-lg">
+                <div><span class="font-semibold">Puzzles Solved:</span> <span id="stops-completed-results">0 / 5</span></div>
+                <div><span class="font-semibold">Badges Earned:</span> <span id="badges-earned-results">None yet!</span></div>
+            </div>
+            <button id="close-results-modal" class="mt-6 w-full bg-gray-500 text-white px-6 py-2 rounded-lg shadow hover:bg-gray-600">Close</button>
+        </div>
+    </div>
 
     <script>
-        // --- Mission Data ---
-        // You can easily change the mission titles and descriptions here
-        const missions = {
-            1: {
-                title: "Mission 1: The Alphabet Book",
-                description: "Explore the giant book and find the first letter of your name. Can you say three words that start with that letter?"
-            },
-            2: {
-                title: "Mission 2: The Letter Path",
-                description: "The path is made of letters! Hop from one letter to another and spell out a three-letter word like 'CAT' or 'DOG'."
-            },
-            3: {
-                title: "Mission 3: Chalkboard Challenge",
-                description: "It's time to draw! Grab some chalk and draw your favorite animal on the board. What sound does it make?"
-            },
-            4: {
-                title: "Mission 4: The Village Library",
-                description: "Visit the cozy library and pick out a story. Reading opens up new worlds of adventure and fun!"
-            }
-        };
+    // --- STATE MANAGEMENT ---
+    let currentLevel = 1;
 
-        // --- DOM Elements ---
-        const missionMarkers = document.querySelectorAll('.mission-marker');
-        const modal = document.getElementById('mission-modal');
-        const modalContent = document.getElementById('modal-content');
-        const modalTitle = document.getElementById('modal-title');
-        const modalDescription = document.getElementById('modal-description');
-        const closeModalButton = document.getElementById('close-modal');
-
-        // --- Functions ---
-        function showModal(missionId) {
-            const mission = missions[missionId];
-            if (mission) {
-                modalTitle.textContent = mission.title;
-                modalDescription.textContent = mission.description;
-                modal.classList.remove('hidden');
-                // We add a small delay to allow the fade-in animation to start
-                setTimeout(() => {
-                    modal.style.opacity = '1';
-                    modalContent.style.transform = 'scale(1)';
-                }, 10);
-            }
-        }
-
-        function hideModal() {
-            modal.style.opacity = '0';
-            modalContent.style.transform = 'scale(0.95)';
-            // We wait for the animation to finish before hiding the element
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
-        }
-
-        // --- Event Listeners ---
-        missionMarkers.forEach(marker => {
-            marker.addEventListener('click', (event) => {
-                // Stop the click from propagating to the background if needed
-                event.stopPropagation();
-                const missionId = marker.dataset.mission;
-                showModal(missionId);
-            });
-        });
-
-        closeModalButton.addEventListener('click', hideModal);
-
-        // Close modal if the user clicks outside the content area
-        modal.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                hideModal();
-            }
-        });
-
-        // Close modal with the 'Escape' key for better accessibility
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
-                hideModal();
-            }
-        });
-    </script>
+    // --- DOM Elements ---
+    const missionStops = document.querySelectorAll('.journey-stop');
+    const quizModal = document.getElementById('quiz-modal');
+    const quizTitle = document.getElementById('quiz-title');
+    const quizQuestion = document.getElementById('quiz-question');
+    const quizOptions = document.getElementById('quiz-options');
+    const quizForm = document.getElementById('quiz-form');
+    const funFactModal = document.getElementById('fun-fact-modal');
+    const funFactText = document.getElementById('fun-fact-text');
+    const closeFunFactModal = document.getElementById('close-fun-fact-modal');
+    const badgeModal = document.getElementById('badge-modal');
+    const learningModules = document.querySelectorAll('.learning-module');
+    const learningContentDisplay = document.getElementById('learning-content-display');
+    const mainTitle = document.getElementById('main-title');
+    const progressButton = document.getElementById('progress-button');
+    const resultsModal = document.getElementById('results-modal');
+    const closeResultsModal = document.getElementById('close-results-modal');
     
+    // --- LEARNING ZONE CONTENT ---
+    const learningData = {
+        1: {
+            content: `
+                <div class="mb-4">
+                    <h4 class="text-2xl font-bold text-gray-800">What is Addition?</h4>
+                    <p class="text-lg text-gray-600">Addition is when you combine two or more numbers to find the total amount. It's like putting groups of things together.</p>
+                </div>
+                <div>
+                    <h4 class="text-2xl font-bold text-gray-800">Example</h4>
+                    <p class="text-lg text-gray-600">If you have <b>3</b> apples and you get <b>2</b> more apples, you add them together: 3 + 2 = 5. You now have <b>5</b> apples in total.</p>
+                </div>`
+        },
+        2: {
+            content: `
+                <div class="mb-4">
+                    <h4 class="text-2xl font-bold text-gray-800">What is Subtraction?</h4>
+                    <p class="text-lg text-gray-600">Subtraction is when you take one number away from another. It's used to find out what is left.</p>
+                </div>
+                <div>
+                     <h4 class="text-2xl font-bold text-gray-800">Example</h4>
+                    <p class="text-lg text-gray-600">If you have <b>8</b> biscuits and you eat <b>3</b>, you subtract to see how many are left: 8 - 3 = 5. You have <b>5</b> biscuits left.</p>
+                </div>`
+        },
+        3: {
+            content: `
+                 <div class="mb-4">
+                    <h4 class="text-2xl font-bold text-gray-800">What is Multiplication?</h4>
+                    <p class="text-lg text-gray-600">Multiplication is a quick way to do repeated addition. It helps you add the same number many times.</p>
+                </div>
+                <div>
+                    <h4 class="text-2xl font-bold text-gray-800">Example</h4>
+                    <p class="text-lg text-gray-600">If there are <b>4</b> baskets, and each basket has <b>5</b> mangoes, you multiply: 4 × 5 = 20. There are <b>20</b> mangoes in total.</p>
+                </div>`
+        },
+        4: {
+            content: `
+                 <div class="mb-4">
+                    <h4 class="text-2xl font-bold text-gray-800">What is Division?</h4>
+                    <p class="text-lg text-gray-600">Division is when you split a number into equal groups. It helps you share things fairly.</p>
+                </div>
+                <div>
+                    <h4 class="text-2xl font-bold text-gray-800">Example</h4>
+                    <p class="text-lg text-gray-600">If you have <b>12</b> sweets to share among <b>4</b> friends, you divide: 12 ÷ 4 = 3. Each friend gets <b>3</b> sweets.</p>
+                </div>`
+        },
+        5: {
+             content: `
+                 <div class="mb-4">
+                    <h4 class="text-2xl font-bold text-gray-800">Solving Word Problems</h4>
+                    <p class="text-lg text-gray-600">Word problems are math questions that use stories. The first step is to read carefully and find the numbers and the key words (like 'total', 'left', 'each').</p>
+                </div>
+                <div>
+                    <h4 class="text-2xl font-bold text-gray-800">Example</h4>
+                    <p class="text-lg text-gray-600">"Ram has 5 pencils. Sita gives him 3 more. How many pencils does Ram have in <b>total</b>?" The word 'total' tells you to add. So, 5 + 3 = 8.</p>
+                </div>`
+        }
+    };
+    
+    // --- QUIZ AND FUN FACT DATA ---
+    const quizData = {
+        1: { question: "What is 7 + 5?", options: ["10", "12", "11"], answer: "12", funFact: "The '+' sign for addition has been used for over 500 years!" },
+        2: { question: "What is 15 - 6?", options: ["9", "8", "10"], answer: "9", funFact: "The word 'subtract' comes from Latin words meaning 'to draw from below'." },
+        3: { question: "What is 5 × 6?", options: ["25", "11", "30"], answer: "30", funFact: "Any number multiplied by zero is always zero!" },
+        4: { question: "What is 20 ÷ 5?", options: ["4", "5", "6"], answer: "4", funFact: "Division is the opposite of multiplication. 4 x 5 = 20!" },
+        5: { question: "Ravi has 10 marbles. He loses 3. How many are left?", options: ["13", "7", "8"], answer: "7", funFact: "Solving word problems is like being a detective looking for clues in a story!" }
+    };
+
+    // --- FUNCTIONS ---
+    function displayModuleContent(moduleId) {
+        learningContentDisplay.innerHTML = learningData[moduleId]?.content || "<p>Select a module.</p>";
+        learningModules.forEach(mod => mod.classList.toggle('active', mod.dataset.module === moduleId));
+    }
+
+    function updateJourneyStops() {
+        missionStops.forEach(stop => {
+            const missionId = parseInt(stop.dataset.mission);
+            stop.classList.remove('locked', 'completed');
+            if (missionId < currentLevel) {
+                stop.classList.add('completed');
+            } else if (missionId > currentLevel) {
+                stop.classList.add('locked');
+            }
+        });
+    }
+
+    function showQuiz(missionId) {
+        const data = quizData[missionId];
+        quizTitle.textContent = `Puzzle #${missionId}`;
+        quizQuestion.textContent = data.question;
+        quizOptions.innerHTML = '';
+        data.options.forEach(option => {
+            quizOptions.innerHTML += `
+                <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:bg-gray-100 cursor-pointer">
+                    <input type="radio" name="quiz" value="${option}" class="mr-3 h-5 w-5 text-indigo-600 focus:ring-indigo-500">
+                    <span class="text-gray-800">${option}</span>
+                </label>`;
+        });
+        quizModal.classList.remove('hidden');
+    }
+
+    function handleQuizSubmit(e) {
+        e.preventDefault();
+        const selectedOption = quizForm.querySelector('input[name="quiz"]:checked');
+        if (!selectedOption) {
+            alert("Please select an answer!");
+            return;
+        }
+
+        const data = quizData[currentLevel];
+        if (selectedOption.value === data.answer) {
+            quizModal.classList.add('hidden');
+            funFactText.textContent = data.funFact;
+            funFactModal.classList.remove('hidden');
+        } else {
+            alert("Not quite, try again! Tip: Check the Learning Zone for hints.");
+        }
+    }
+    
+    function advanceLevel() {
+        funFactModal.classList.add('hidden');
+        if (currentLevel < 5) {
+            currentLevel++;
+            updateJourneyStops();
+        } else {
+            mainTitle.textContent = "Math Adventure Complete!";
+            badgeModal.classList.remove('hidden');
+        }
+    }
+    
+    function showResults() {
+        document.getElementById('stops-completed-results').textContent = `${Math.min(currentLevel - 1, 5)} / 5`;
+        const badgeText = (currentLevel > 5) ? "Math Whiz Badge! 🏅" : "None yet!";
+        document.getElementById('badges-earned-results').textContent = badgeText;
+        resultsModal.classList.remove('hidden');
+    }
+
+    // --- EVENT LISTENERS ---
+    learningModules.forEach(module => {
+        module.addEventListener('click', () => displayModuleContent(module.dataset.module));
+    });
+
+    missionStops.forEach(stop => {
+        stop.addEventListener('click', () => {
+             const missionId = parseInt(stop.dataset.mission);
+             if (missionId === currentLevel) showQuiz(missionId);
+        });
+    });
+
+    quizForm.addEventListener('submit', handleQuizSubmit);
+    closeFunFactModal.addEventListener('click', advanceLevel);
+    progressButton.addEventListener('click', showResults);
+    closeResultsModal.addEventListener('click', () => resultsModal.classList.add('hidden'));
+
+    // --- Initial Setup ---
+    updateJourneyStops();
+    displayModuleContent('1');
+</script>
+
 </body>
 </html>

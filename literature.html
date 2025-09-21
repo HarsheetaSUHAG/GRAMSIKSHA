@@ -3,38 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gamified Learning Platform</title>
+    <title>Gamified Learning Platform - Literacy</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="public/css/literacy_hangman.css">
     <style>
-        body { font-family: 'Poppins', sans-serif; }
-        .mission-marker { animation: pulse 2s infinite; box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        .mission-marker { animation: pulse 2s infinite; box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.7); }
         @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
-            70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(96, 165, 250, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(96, 165, 250, 0); }
         }
-        .game-map-container { width: 100%; max-width: 1000px; aspect-ratio: 4 / 3; margin: auto; }
-        /* Add these new styles inside your existing <style> tag */
         .locked {
-            filter: grayscale(1); /* Makes the marker gray */
-            animation: none; /* Stops the pulsing */
-            pointer-events: none; /* Disables clicks */
+            filter: grayscale(1);
+            animation: none;
+            pointer-events: none;
             cursor: not-allowed;
-}
-
+            background-color: #9ca3af !important; /* Gray color */
+        }
         .completed {
-        background-color: #28a745 !important; /* A success green color */
-        animation: none; /* Stops the pulsing */
-}
+            background-color: #22c55e !important; /* A success green color */
+            animation: none;
+        }
+        /* Custom styles for hangman game */
+        .game-container { max-width: 800px; margin: auto; }
+        .key {
+            background-color: #e5e7eb; border: 1px solid #d1d5db; border-radius: 0.375rem;
+            padding: 0.75rem; margin: 0.25rem; font-weight: 600; cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .key:hover { background-color: #d1d5db; }
+        .key:disabled { background-color: #9ca3af; color: #e5e7eb; cursor: not-allowed; }
+        .keyboard { display: flex; flex-wrap: wrap; justify-content: center; margin-top: 1rem; }
+        .word-display { font-size: 2rem; letter-spacing: 0.5rem; margin: 1rem 0; font-weight: 700; }
+        .message { font-size: 1.25rem; min-height: 2rem; color: #4b5563; }
+        
+        /* Styles for interactive learning zone */
+        .learning-module h3 { cursor: pointer; transition: color 0.2s; }
+        .learning-module h3:hover { color: #f97316; }
+        .learning-module.active h3 { color: #2563eb; font-weight: 700; }
+        
     </style>
 </head>
-<body class="bg-blue-100 flex flex-col items-center justify-center min-h-screen pt-20 p-4">
+<body class="bg-blue-50">
+
     <nav class="bg-white/90 backdrop-blur-md shadow-md fixed top-0 left-0 w-full z-20">
-      <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+      <div class="max-w-screen-2xl mx-auto px-6 py-3 flex justify-between items-center">
         <div class="flex items-center space-x-2">
-          <img src="public/images/image.png" alt="Logo" class="h-12">
+          <img src="public\images\image.png" alt="Logo" class="h-12">
           <h1 class="text-lg font-bold text-green-700">GRAMSIKSHA</h1>
         </div>
         <div class="flex items-center space-x-4">
@@ -43,46 +59,81 @@
         </div>
       </div>
     </nav>
-    <div class="w-full max-w-5xl text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-slate-800 mb-4">Welcome to the Learning Adventure!</h1>
-        <p class="text-slate-600 mb-8">Click on a numbered mission to begin your journey.</p>
-        </div>
-        <div id="game-map-container" class="relative game-map-container">
-            <img src="public/images/Generated Image September 20, 2025 - 4_17PM.png" alt="A cartoon village with a path" class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl">
-            <div data-mission="1" class="mission-marker absolute w-10 h-10 md:w-12 md:h-12 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-xl cursor-pointer border-4 border-white" style="top: 75%; left: 15%;">1</div>
-            <div data-mission="2" class="mission-marker absolute w-10 h-10 md:w-12 md:h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl cursor-pointer border-4 border-white" style="top: 50%; left: 48%;">2</div>
-            <div data-mission="3" class="mission-marker absolute w-10 h-10 md:w-12 md:h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-xl cursor-pointer border-4 border-white" style="top: 65%; left: 78%;">3</div>
-            <div data-mission="4" class="mission-marker absolute w-10 h-10 md:w-12 md:h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-xl cursor-pointer border-4 border-white" style="top: 25%; left: 35%;">4</div>
-        </div>
-    </div>
 
-    <div id="mission-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
-        <div id="modal-content" class="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full text-center">
-            <h2 id="modal-title" class="text-3xl font-bold text-gray-800 mb-4"></h2>
-            <p id="modal-description" class="text-gray-600 mb-6"></p>
-            <button id="close-modal" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700">Let's Go!</button>
+    <main class="w-full max-w-screen-2xl mx-auto pt-24 px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-8">
+            <h1 id="main-title" class="text-4xl md:text-5xl font-bold text-slate-800">Literacy Learning Adventure!</h1>
+            <p class="text-slate-600 mt-2">Use the Learning Zone on the left to study, then complete the missions on the right.</p>
         </div>
-    </div>
-    
+
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+            
+            <!-- Left Column: Learning Module -->
+            <div class="w-full lg:w-2/5 bg-white rounded-2xl shadow-lg p-6 sticky top-24">
+                <h2 class="text-4xl font-bold text-blue-800 mb-4 border-b-2 border-blue-200 pb-2">📚 Learning Zone</h2>
+                <div id="learning-modules-container" class="space-y-4">
+                    <div class="learning-module" data-module="1">
+                        <h3 class="font-semibold text-xl text-gray-700">Module 1: The Alphabet</h3>
+                    </div>
+                    <div class="learning-module" data-module="2">
+                        <h3 class="font-semibold text-xl text-gray-700">Module 2: Simple Words</h3>
+                    </div>
+                    <div class="learning-module" data-module="3">
+                        <h3 class="font-semibold text-xl text-gray-700">Module 3: Everyday Objects</h3>
+                    </div>
+                    <div class="learning-module" data-module="4">
+                        <h3 class="font-semibold text-xl text-gray-700">Module 4: Community Words</h3>
+                    </div>
+                </div>
+                <div id="learning-content-display" class="mt-6 border-t-2 border-blue-200 pt-4">
+                    <p class="text-gray-500">Click a module above to see related words and examples!</p>
+                </div>
+            </div>
+
+            <!-- Right Column: Gamified Map -->
+            <div class="w-full lg:w-3/5">
+                <div id="game-map-container" class="relative w-full" style="aspect-ratio: 4 / 3;">
+                    <img src="public\images\Generated Image September 20, 2025 - 4_17PM.png" alt="A cartoon village with a path" class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl">
+                    <div data-mission="1" class="mission-marker absolute w-12 h-12 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-xl cursor-pointer border-4 border-white" style="top: 75%; left: 15%;">1</div>
+                    <div data-mission="2" class="mission-marker absolute w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl cursor-pointer border-4 border-white" style="top: 50%; left: 48%;">2</div>
+                    <div data-mission="3" class="mission-marker absolute w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-xl cursor-pointer border-4 border-white" style="top: 65%; left: 78%;">3</div>
+                    <div data-mission="4" class="mission-marker absolute w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-xl cursor-pointer border-4 border-white" style="top: 25%; left: 35%;">4</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Hangman Game Modal -->
     <div id="hangman-container" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
-        <div class="game-container bg-white rounded-lg p-6 relative">
-            <h1>Word</h1>
-            <div class="game-area">
+        <div class="game-container bg-white rounded-lg p-6 relative text-center">
+            <h1 class="text-3xl font-bold text-gray-800">Guess the Word!</h1>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 mt-4">
                 <div class="hangman-display">
-                    <img id="hangman-image" src="public/images/hangman/hangman_0.png" alt="Hangman" />
+                    <img id="hangman-image" src="https://placehold.co/200x250/ffffff/000000?text=Hangman" alt="Hangman" />
                 </div>
                 <div class="word-and-message">
-                    <p id="word-display" class="word-display"></p>
+                    <p id="word-display" class="word-display text-gray-700"></p>
                     <p id="message" class="message"></p>
                 </div>
             </div>
-            <div class="controls">
+            <div class="controls mt-4">
                 <div id="keyboard" class="keyboard"></div>
-                <button id="hint-button">Get a Hint</button>
-                <button id="new-game-button" class="hidden">Play Again</button>
-                <button id="next-mission-button" class="hidden">Next Mission</button>
+                <div class="mt-4 flex gap-4 justify-center">
+                    <button id="hint-button" class="bg-yellow-500 text-white px-4 py-2 rounded-lg shadow hover:bg-yellow-600">Get a Hint</button>
+                    <button id="new-game-button" class="hidden bg-red-500 text-white px-4 py-2 rounded-lg shadow hover:bg-red-600">Play Again</button>
+                    <button id="next-mission-button" class="hidden bg-green-500 text-white px-4 py-2 rounded-lg shadow hover:bg-green-600">Next Mission</button>
+                </div>
             </div>
-            <button id="close-hangman-btn" class="absolute top-2 right-4 text-2xl font-bold">&times;</button>
+            <button id="close-hangman-btn" class="absolute top-2 right-4 text-3xl font-bold text-gray-500 hover:text-gray-800">&times;</button>
+        </div>
+    </div>
+    
+    <!-- Completion Modal -->
+    <div id="completion-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full text-center">
+             <h2 class="text-3xl font-bold text-yellow-500 mb-4">Congratulations! 🥳</h2>
+             <p class="text-gray-600 mb-6">You've completed all the missions in the Literacy Adventure!</p>
+             <a href="index.html#courses" class="bg-green-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-700">Back to Courses</a>
         </div>
     </div>
 
@@ -90,9 +141,8 @@
     // --- STATE MANAGEMENT ---
     let currentLevel = 1;
 
-    // --- ALL DOM Elements ---
+    // --- DOM Elements ---
     const missionMarkers = document.querySelectorAll('.mission-marker');
-    const modal = document.getElementById('mission-modal');
     const hangmanContainer = document.getElementById('hangman-container');
     const closeHangmanButton = document.getElementById('close-hangman-btn');
     const wordDisplay = document.getElementById('word-display');
@@ -102,16 +152,83 @@
     const newGameButton = document.getElementById('new-game-button');
     const hintButton = document.getElementById('hint-button');
     const nextMissionButton = document.getElementById('next-mission-button');
+    const learningModules = document.querySelectorAll('.learning-module');
+    const learningContentDisplay = document.getElementById('learning-content-display');
+    const completionModal = document.getElementById('completion-modal');
+    const mainTitle = document.getElementById('main-title');
+    
+    // --- LEARNING ZONE CONTENT ---
+    const learningData = {
+        1: {
+            title: "The Alphabet",
+            content: [
+                { word: "Apple", meaning: "A round fruit with red or green skin.", usage: "An <b>apple</b> a day keeps the doctor away." },
+                { word: "Ball", meaning: "A round object used in games.", usage: "The boy threw the <b>ball</b> to his dog." },
+            ]
+        },
+        2: {
+            title: "Simple Words",
+            content: [
+                { word: "Cat", meaning: "A small animal with fur, often kept as a pet.", usage: "The black <b>cat</b> slept on the sunny rug." },
+                { word: "Sun", meaning: "The star that gives us light and heat.", usage: "The <b>sun</b> is very bright today." },
+            ]
+        },
+        3: {
+            title: "Everyday Objects",
+            content: [
+                { word: "Book", meaning: "A set of pages with stories or information.", usage: "I love to read a good <b>book</b> before bed." },
+                { word: "School", meaning: "A place where children go to learn.", usage: "We learn math and science at <b>school</b>." },
+            ]
+        },
+        4: {
+            title: "Community Words",
+            content: [
+                { word: "Farmer", meaning: "A person who grows crops or raises animals.", usage: "The <b>farmer</b> wakes up early to work in the fields." },
+                { word: "Village", meaning: "A small group of houses in the countryside.", usage: "Our <b>village</b> is surrounded by green fields." },
+            ]
+        }
+    };
+
+    // --- LEARNING ZONE LOGIC ---
+    function displayModuleContent(moduleId) {
+        const moduleData = learningData[moduleId];
+        if (!moduleData) return;
+
+        let contentHTML = '';
+        moduleData.content.forEach(item => {
+            contentHTML += `
+                <div class="mb-4">
+                    <h4 class="text-2xl font-bold text-gray-800">${item.word}</h4>
+                    <p class="text-lg text-gray-600"><b class="font-semibold">Meaning:</b> ${item.meaning}</p>
+                    <p class="text-lg text-gray-600"><b class="font-semibold">Example:</b> ${item.usage}</p>
+                </div>
+            `;
+        });
+        learningContentDisplay.innerHTML = contentHTML;
+
+        // Highlight the active module
+        learningModules.forEach(mod => {
+            mod.classList.remove('active');
+            if(mod.dataset.module === moduleId) {
+                mod.classList.add('active');
+            }
+        });
+    }
 
     // --- HANGMAN GAME LOGIC ---
     const wordList = ["CAT", "DOG", "SUN", "BOOK", "APPLE", "FARMER", "VILLAGE", "SCHOOL"];
-    const images = ["public/images/hangman/hangman_0.png", "public/images/hangman/hangman_1.png", "public/images/hangman/hangman_2.png", "public/images/hangman/hangman_3.png", "public/images/hangman/hangman_4.png", "public/images/hangman/hangman_5.png", "public/images/hangman/hangman_6.png"];
+    const images = [
+        "https://placehold.co/200x250/ffffff/e5e7eb?text=6+Lives", "https://placehold.co/200x250/ffffff/e5e7eb?text=5+Lives",
+        "https://placehold.co/200x250/ffffff/e5e7eb?text=4+Lives", "https://placehold.co/200x250/ffffff/e5e7eb?text=3+Lives",
+        "https://placehold.co/200x250/ffffff/e5e7eb?text=2+Lives", "https://placehold.co/200x250/ffffff/e5e7eb?text=1+Life",
+        "https://placehold.co/200x250/ffffff/e5e7eb?text=Game+Over"
+    ];
     let selectedWord = '';
     let guessedLetters = new Set();
     let remainingLives = 6;
 
     function newGame() {
-        selectedWord = wordList[Math.floor(Math.random() * wordList.length)];
+        selectedWord = wordList[Math.floor(Math.random() * wordList.length)].toUpperCase();
         guessedLetters.clear();
         remainingLives = 6;
         hangmanImage.src = images[0];
@@ -139,16 +256,11 @@
         });
     }
 
-    function disableKey(letter) {
-        keyboard.querySelectorAll('.key').forEach(key => {
-            if (key.textContent === letter) key.disabled = true;
-        });
-    }
-
     function handleGuess(letter) {
-        if (guessedLetters.has(letter)) return;
+        if (guessedLetters.has(letter) || remainingLives === 0 || wordDisplay.textContent.replace(/ /g, '') === selectedWord) return;
         guessedLetters.add(letter);
-        disableKey(letter);
+        const key = Array.from(keyboard.children).find(k => k.textContent === letter);
+        if(key) key.disabled = true;
 
         if (selectedWord.includes(letter)) {
             messageDisplay.textContent = 'Correct!';
@@ -205,24 +317,30 @@
         missionMarkers.forEach(marker => {
             const missionId = parseInt(marker.dataset.mission);
             marker.classList.remove('locked', 'completed');
+            marker.style.pointerEvents = 'auto';
+            marker.style.cursor = 'pointer';
 
             if (missionId < currentLevel) {
                 marker.classList.add('completed');
             } else if (missionId > currentLevel) {
                 marker.classList.add('locked');
+                marker.style.pointerEvents = 'none';
+                marker.style.cursor = 'not-allowed';
             }
         });
     }
 
     // --- EVENT LISTENERS ---
+    learningModules.forEach(module => {
+        module.addEventListener('click', () => {
+            displayModuleContent(module.dataset.module);
+        });
+    });
+
     missionMarkers.forEach(marker => {
         marker.addEventListener('click', () => {
             const missionId = parseInt(marker.dataset.mission);
-
-            // Only allow clicks on the CURRENT level
             if (missionId === currentLevel) {
-                // FIXED: This now launches hangman for any implemented mission.
-                // In the future, you can use a switch statement here to launch different games.
                 hangmanContainer.classList.remove('hidden');
                 newGame();
             }
@@ -230,21 +348,26 @@
     });
 
     nextMissionButton.addEventListener('click', () => {
-        currentLevel++;
+        if(currentLevel < 4){
+            currentLevel++;
+             if (currentLevel > 4) currentLevel = 4; // cap at 4
+        } else {
+            completionModal.classList.remove('hidden');
+            mainTitle.textContent = "Adventure Complete!";
+        }
         hangmanContainer.classList.add('hidden');
         updateMarkers();
     });
 
-    // FIXED: Added the missing event listener for the hint button
     if (hintButton) hintButton.addEventListener('click', getHint);
-
-    // Other listeners
     newGameButton.addEventListener('click', newGame);
     closeHangmanButton.addEventListener('click', () => hangmanContainer.classList.add('hidden'));
 
     // --- Initial Setup ---
-    updateMarkers(); // Set the initial state of the map on page load
+    updateMarkers();
+    displayModuleContent('1'); // Display first module content by default
 </script>
 
 </body>
 </html>
+
