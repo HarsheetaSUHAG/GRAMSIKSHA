@@ -65,26 +65,25 @@
     </div>
     
     <div id="hangman-container" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
-        <div class="game-container bg-white rounded-lg p-6 relative">
-            <h1>Word</h1>
-            <div class="game-area">
-                <div class="hangman-display">
-                    <img id="hangman-image" src="public/images/hangman/hangman_0.png" alt="Hangman" />
-                </div>
-                <div class="word-and-message">
-                    <p id="word-display" class="word-display"></p>
-                    <p id="message" class="message"></p>
-                </div>
+    <div class="game-container bg-white rounded-lg p-6 relative">
+        <h1 class="text-2xl font-bold mb-4">Guess the Word!</h1>
+        <div class="game-area">
+            <div class="hint-image-container">
+                <img id="hint-image" src="" alt="Image hint for the word" class="mx-auto h-40 object-contain mb-4"/>
             </div>
-            <div class="controls">
-                <div id="keyboard" class="keyboard"></div>
-                <button id="hint-button">Get a Hint</button>
-                <button id="new-game-button" class="hidden">Play Again</button>
-                <button id="next-mission-button" class="hidden">Next Mission</button>
+            <div class="word-and-message">
+                <p id="word-display" class="word-display text-4xl tracking-widest my-2"></p>
+                <p id="message" class="message h-6 my-2"></p>
             </div>
-            <button id="close-hangman-btn" class="absolute top-2 right-4 text-2xl font-bold">&times;</button>
         </div>
+        <div class="controls">
+            <div id="keyboard" class="keyboard"></div>
+            <button id="next-mission-button" class="hidden">Next Mission</button>
+            <button id="new-game-button" class="hidden">Play Again</button>
+        </div>
+        <button id="close-hangman-btn" class="absolute top-2 right-4 text-3xl font-bold text-gray-500 hover:text-gray-800">&times;</button>
     </div>
+</div>
 
     <script>
     // --- STATE MANAGEMENT ---
@@ -92,33 +91,43 @@
 
     // --- ALL DOM Elements ---
     const missionMarkers = document.querySelectorAll('.mission-marker');
-    const modal = document.getElementById('mission-modal');
     const hangmanContainer = document.getElementById('hangman-container');
     const closeHangmanButton = document.getElementById('close-hangman-btn');
     const wordDisplay = document.getElementById('word-display');
     const messageDisplay = document.getElementById('message');
-    const hangmanImage = document.getElementById('hangman-image');
+    const hintImage = document.getElementById('hint-image');
     const keyboard = document.getElementById('keyboard');
     const newGameButton = document.getElementById('new-game-button');
-    const hintButton = document.getElementById('hint-button');
     const nextMissionButton = document.getElementById('next-mission-button');
 
-    // --- HANGMAN GAME LOGIC ---
-    const wordList = ["CAT", "DOG", "SUN", "BOOK", "APPLE", "FARMER", "VILLAGE", "SCHOOL"];
-    const images = ["public/images/hangman/hangman_0.png", "public/images/hangman/hangman_1.png", "public/images/hangman/hangman_2.png", "public/images/hangman/hangman_3.png", "public/images/hangman/hangman_4.png", "public/images/hangman/hangman_5.png", "public/images/hangman/hangman_6.png"];
+    // --- HANGMAN GAME LOGIC (Paths updated to remove "public/") ---
+    const wordList = [
+        { word: "CAT", image: "public/images/hangman/cat.png" }, 
+        { word: "DOG", image: "public/images/hangman/DOG.png" },
+        { word: "SUN", image: "public/images/hangman/SUN.png" },
+        { word: "MOON", image: "public/images/hangman/MOON.png" },
+        { word: "APPLE", image: "public/images/hangman/APPLE.png" },
+        { word: "FARMER", image: "public/images/hangman/FARMER.png" },
+        { word: "COMPUTER", image: "public/images/hangman/COMPUTER.png" }
+    ];
+
     let selectedWord = '';
     let guessedLetters = new Set();
     let remainingLives = 6;
 
     function newGame() {
-        selectedWord = wordList[Math.floor(Math.random() * wordList.length)];
+        const selectedObject = wordList[Math.floor(Math.random() * wordList.length)];
+        selectedWord = selectedObject.word.toUpperCase();
+        hintImage.src = selectedObject.image;
+        
         guessedLetters.clear();
         remainingLives = 6;
-        hangmanImage.src = images[0];
+        
         newGameButton.classList.add('hidden');
-        nextMissionButton.classList.add('hidden');
-        if (hintButton) hintButton.disabled = false;
+        if (nextMissionButton) nextMissionButton.classList.add('hidden');
+        
         messageDisplay.textContent = 'Guess the word!';
+        
         renderWordDisplay();
         renderKeyboard();
     }
@@ -155,7 +164,6 @@
         } else {
             remainingLives--;
             messageDisplay.textContent = `Wrong! You have ${remainingLives} lives left.`;
-            hangmanImage.src = images[6 - remainingLives];
         }
         renderWordDisplay();
         checkGameStatus();
@@ -165,38 +173,20 @@
         const currentWord = wordDisplay.textContent.replace(/ /g, '');
         if (currentWord === selectedWord) {
             messageDisplay.textContent = 'You won! 🎉';
-            endGame(true);
-        } else if (remainingLives === 0) {
+            endGame(true); // Win
+        } else if (remainingLives <= 0) {
             messageDisplay.textContent = `You lost! The word was "${selectedWord}".`;
-            endGame(false);
+            endGame(false); // Loss
         }
     }
 
     function endGame(didWin) {
         keyboard.querySelectorAll('.key').forEach(key => key.disabled = true);
-        if (hintButton) hintButton.disabled = true;
-
+        
         if (didWin) {
-            nextMissionButton.classList.remove('hidden');
+            if (nextMissionButton) nextMissionButton.classList.remove('hidden');
         } else {
             newGameButton.classList.remove('hidden');
-        }
-    }
-    
-    function getHint() {
-        if (remainingLives <= 1) {
-            messageDisplay.textContent = "You don't have enough lives for a hint!";
-            return;
-        }
-        const unguessedLetters = Array.from(selectedWord).filter(letter => !guessedLetters.has(letter));
-        if (unguessedLetters.length > 0) {
-            const randomHintLetter = unguessedLetters[Math.floor(Math.random() * unguessedLetters.length)];
-            remainingLives--;
-            hangmanImage.src = images[6 - remainingLives];
-            messageDisplay.textContent = `Hint taken! You used 1 life.`;
-            handleGuess(randomHintLetter);
-        } else {
-            messageDisplay.textContent = "No more hints available.";
         }
     }
 
@@ -218,32 +208,28 @@
     missionMarkers.forEach(marker => {
         marker.addEventListener('click', () => {
             const missionId = parseInt(marker.dataset.mission);
-
-            // Only allow clicks on the CURRENT level
             if (missionId === currentLevel) {
-                // FIXED: This now launches hangman for any implemented mission.
-                // In the future, you can use a switch statement here to launch different games.
                 hangmanContainer.classList.remove('hidden');
                 newGame();
             }
         });
     });
 
-    nextMissionButton.addEventListener('click', () => {
-        currentLevel++;
-        hangmanContainer.classList.add('hidden');
-        updateMarkers();
-    });
+    if (nextMissionButton) {
+        nextMissionButton.addEventListener('click', () => {
+            currentLevel++;
+            hangmanContainer.classList.add('hidden');
+            updateMarkers();
+        });
+    }
 
-    // FIXED: Added the missing event listener for the hint button
-    if (hintButton) hintButton.addEventListener('click', getHint);
-
-    // Other listeners
     newGameButton.addEventListener('click', newGame);
-    closeHangmanButton.addEventListener('click', () => hangmanContainer.classList.add('hidden'));
+    if (closeHangmanButton) {
+        closeHangmanButton.addEventListener('click', () => hangmanContainer.classList.add('hidden'));
+    }
 
     // --- Initial Setup ---
-    updateMarkers(); // Set the initial state of the map on page load
+    updateMarkers();
 </script>
 
 </body>
