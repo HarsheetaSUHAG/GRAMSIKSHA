@@ -33,11 +33,21 @@ h1 {
     gap: 25px;
 }
 
-.hangman-image {
-    max-width: 10px;
-    max-height: 10px;
-    height: auto;
-    /* transition: transform 0.3s ease-in-out; */
+.hint-image-container {
+    width: 250px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.hint-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 .word-display {
@@ -50,7 +60,7 @@ h1 {
 
 .message {
     font-size: 1.2em;
-    height: 1.5em; /* To prevent layout shift */
+    height: 1.5em;
     font-style: italic;
     color: #666;
 }
@@ -104,11 +114,8 @@ h1 {
     background-color: #218838;
 }
 
-.hidden {
-    display: none;
-}
 #hint-button {
-    background-color: #3498db; /* A blue color */
+    background-color: #3498db;
     color: white;
     padding: 12px 25px;
     border: none;
@@ -126,4 +133,7 @@ h1 {
 #hint-button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+}
+.hidden {
+    display: none;
 }

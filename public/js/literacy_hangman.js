@@ -1,49 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
     const wordDisplay = document.getElementById('word-display');
     const messageDisplay = document.getElementById('message');
-    const hangmanImage = document.getElementById('hangman-image');
+    const hintImage = document.getElementById('hint-image');
     const keyboard = document.getElementById('keyboard');
     const newGameButton = document.getElementById('new-game-button');
     const hintButton = document.getElementById('hint-button');
 
     const wordList = [
-        "CAT", "DOG", "SUN", "MOON", "BOOK",
-        "APPLE", "TRAIN", "HOUSE", "FARMER",
-        "COMPUTER", "EDUCATION", "AGRICULTURE", "COMMUNITY", "TECHNOLOGY"
+        { word: "CAT", image: "images/hangman/cat.png" },
+        { word: "DOG", image: "images/hangman/dog.png" },
+        { word: "SUN", image: "images/hangman/SUN.png" },
+        { word: "MOON", image: "images/hangman/MOON.png" },
+        { word: "APPLE", image: "images/hangman/APPLE.png" },
+        { word: "FARMER", image: "images/hangmanFARMER.png" },
+        { word: "COMPUTER", image: "images/hangman/COMPUTER.png" }
     ];
 
     let selectedWord = '';
     let guessedLetters = new Set();
     let remainingLives = 6;
-    let images = ["images/hangman_0.png", "images/hangman_1.png", "images/hangman_2.png", "images/hangman_3.png", "images/hangman_4.png", "images/hangman_5.png", "images/hangman_6.png"];
+    let hangmanImages = ["images/hangman/hangman_0.png", "images/hangman/hangman_1.png", "images/hangman/hangman_2.png", "images/hangman/hangman_3.png", "images/hangman/hangman_4.png", "images/hangman/hangman_5.png", "images/hangman/hangman_6.png"];
 
     // Function to start a new game with the new rules
     function newGame() {
-        selectedWord = wordList[Math.floor(Math.random() * wordList.length)];
+        const selectedObject = wordList[Math.floor(Math.random() * wordList.length)];
+        selectedWord = selectedObject.word.toUpperCase();
+        hintImage.src = selectedObject.image;
+        
         guessedLetters.clear();
         remainingLives = 6;
-        hangmanImage.src = images[0];
+        
         newGameButton.classList.add('hidden');
         hintButton.disabled = false;
-
-        const lettersToRevealCount = Math.floor(Math.random() * 3) + 1;
-        let revealedIndices = new Set();
         
-        while (revealedIndices.size < lettersToRevealCount) {
-            const randomIndex = Math.floor(Math.random() * selectedWord.length);
-            const letter = selectedWord[randomIndex];
-            if (!revealedIndices.has(randomIndex)) {
-                guessedLetters.add(letter);
-                revealedIndices.add(randomIndex);
-            }
-        }
+        messageDisplay.textContent = 'Guess the word!';
         
-        if (lettersToRevealCount > 0) {
-            messageDisplay.textContent = 'Some letters are already revealed. Guess the rest!';
-        } else {
-            messageDisplay.textContent = 'Guess the word!';
-        }
-
         renderWordDisplay();
         renderKeyboard();
     }
@@ -96,8 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
             messageDisplay.textContent = 'Correct!';
         } else {
             remainingLives--;
+            // The hangman image is no longer used for lives, so we show a message
             messageDisplay.textContent = `Wrong! You have ${remainingLives} lives left.`;
-            hangmanImage.src = images[6 - remainingLives];
         }
 
         renderWordDisplay();
@@ -130,21 +121,16 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Find all unguessed letters
         const unguessedLetters = Array.from(selectedWord).filter(letter => !guessedLetters.has(letter));
         
         if (unguessedLetters.length > 0) {
             const randomHintLetter = unguessedLetters[Math.floor(Math.random() * unguessedLetters.length)];
             
-            // Apply the penalty and use the hint
             remainingLives--;
-            hangmanImage.src = images[6 - remainingLives];
             messageDisplay.textContent = `Hint taken! You used 1 life.`;
             
-            // Automatically guess the letter
             handleGuess(randomHintLetter);
         } else {
-            // This case should not be reached if the word is not fully guessed
             messageDisplay.textContent = "No more hints available.";
         }
     }
