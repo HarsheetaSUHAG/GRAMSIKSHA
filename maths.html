@@ -6,6 +6,7 @@
     <title>Gamified Learning Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="public/css/math_2048.css">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -80,88 +81,163 @@
             <button id="close-modal" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Let's Go!</button>
         </div>
     </div>
+    <div id="game-2048-container" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+        <div class="container">
+    <div class="heading">
+      <h1 class="title">2048</h1>
+      <div class="scores-container">
+        <div class="score-container">0</div>
+        <div class="best-container">0</div>
+      </div>
+    </div>
+
+    <div class="above-game">
+  <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
+  <a class="restart-button">New Game</a>
+  
+  <button id="next-mission-button" class="hidden">Next Mission</button>
+  <button id="retry-button" class="hidden">Play Again</button>
+</div>
+
+    <div class="game-container">
+      <div class="game-message">
+        <p></p>
+        <div class="lower">
+	        <a class="keep-playing-button">Keep going</a>
+          <a class="retry-button">Try again</a>
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+      </div>
+
+      <div class="tile-container">
+
+      </div>
+    </div>
+
+    <p class="game-explanation">
+      <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
+    </p>
+    <hr>
+    <p>
+    <strong class="important">Note:</strong> This site is the official version of 2048. You can play it on your phone via <a href="http://git.io/2048">http://git.io/2048.</a> All other apps or sites are derivatives or fakes, and should be used with caution.
+    </p>
+    <hr>
+    <p>
+    Created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
+    </p>
+    </div>
+        <button id="close-2048-btn" class="absolute top-4 right-4 text-3xl font-bold text-white">&times;</button>
+    </div>
     
 
-    <script>
-        // --- Mission Data ---
-        // You can easily change the mission titles and descriptions here
-        const missions = {
-            1: {
-                title: "Mission 1: The Alphabet Book",
-                description: "Explore the giant book and find the first letter of your name. Can you say three words that start with that letter?"
-            },
-            2: {
-                title: "Mission 2: The Letter Path",
-                description: "The path is made of letters! Hop from one letter to another and spell out a three-letter word like 'CAT' or 'DOG'."
-            },
-            3: {
-                title: "Mission 3: Chalkboard Challenge",
-                description: "It's time to draw! Grab some chalk and draw your favorite animal on the board. What sound does it make?"
-            },
-            4: {
-                title: "Mission 4: The Village Library",
-                description: "Visit the cozy library and pick out a story. Reading opens up new worlds of adventure and fun!"
-            }
-        };
+<script src="public/js/bind_polyfill.js"></script>
+<script src="public/js/classlist_polyfill.js"></script>
+<script src="public/js/animframe_polyfill.js"></script>
+<script src="public/js/keyboard_input_manager.js"></script>
+<script src="public/js/html_actuator.js"></script>
+<script src="public/js/grid.js"></script>
+<script src="public/js/tile.js"></script>
+<script src="public/js/local_storage_manager.js"></script>
+<script src="public/js/game_manager.js"></script>
+<script src="public/js/application.js"></script>
+  <script>
+    // --- STATE MANAGEMENT ---
+    let currentLevel = 1;
 
-        // --- DOM Elements ---
-        const missionMarkers = document.querySelectorAll('.mission-marker');
-        const modal = document.getElementById('mission-modal');
-        const modalContent = document.getElementById('modal-content');
-        const modalTitle = document.getElementById('modal-title');
-        const modalDescription = document.getElementById('modal-description');
-        const closeModalButton = document.getElementById('close-modal');
+    // --- DOM Elements ---
+    const missionMarkers = document.querySelectorAll('.mission-marker');
+    const game2048Container = document.getElementById('game-2048-container');
+    const nextMissionButton = document.getElementById('next-mission-button');
+    const retryButton = document.getElementById('retry-button'); // Our custom retry button
+    const originalRestartButton = game2048Container.querySelector('.restart-button'); // The game's original button
+    const close2048Button = document.getElementById('close-2048-btn');
 
-        // --- Functions ---
-        function showModal(missionId) {
-            const mission = missions[missionId];
-            if (mission) {
-                modalTitle.textContent = mission.title;
-                modalDescription.textContent = mission.description;
-                modal.classList.remove('hidden');
-                // We add a small delay to allow the fade-in animation to start
-                setTimeout(() => {
-                    modal.style.opacity = '1';
-                    modalContent.style.transform = 'scale(1)';
-                }, 10);
-            }
-        }
+    // --- GAME CONTROL FUNCTIONS (These will be called by game_manager.js) ---
+    function onGameWon() {
+        console.log("Journey script: Game WON!");
+        nextMissionButton.classList.remove('hidden');
+        retryButton.classList.add('hidden');
+    }
 
-        function hideModal() {
-            modal.style.opacity = '0';
-            modalContent.style.transform = 'scale(0.95)';
-            // We wait for the animation to finish before hiding the element
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
-        }
-
-        // --- Event Listeners ---
+    function onGameLost() {
+        console.log("Journey script: Game LOST!");
+        retryButton.classList.remove('hidden');
+        nextMissionButton.classList.add('hidden');
+    }
+    
+    // --- PAGE AND PROGRESSION LOGIC ---
+    function updateMarkers() {
         missionMarkers.forEach(marker => {
-            marker.addEventListener('click', (event) => {
-                // Stop the click from propagating to the background if needed
-                event.stopPropagation();
-                const missionId = marker.dataset.mission;
-                showModal(missionId);
-            });
-        });
+            const missionId = parseInt(marker.dataset.mission);
+            marker.classList.remove('locked', 'completed');
 
-        closeModalButton.addEventListener('click', hideModal);
-
-        // Close modal if the user clicks outside the content area
-        modal.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                hideModal();
+            if (missionId < currentLevel) {
+                marker.classList.add('completed');
+            } else if (missionId > currentLevel) {
+                marker.classList.add('locked');
             }
         });
+    }
 
-        // Close modal with the 'Escape' key for better accessibility
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
-                hideModal();
+    // --- EVENT LISTENERS ---
+    missionMarkers.forEach(marker => {
+        marker.addEventListener('click', () => {
+            const missionId = parseInt(marker.dataset.mission);
+            if (missionId === currentLevel) {
+                game2048Container.classList.remove('hidden');
+                // Make sure the game is reset and our buttons are hidden
+                originalRestartButton.click(); 
+                retryButton.classList.add('hidden');
+                nextMissionButton.classList.add('hidden');
             }
         });
-    </script>
+    });
+
+    nextMissionButton.addEventListener('click', () => {
+        currentLevel++;
+        game2048Container.classList.add('hidden');
+        updateMarkers();
+    });
+
+    retryButton.addEventListener('click', () => {
+        // When our custom retry button is clicked, we click the game's original restart button
+        originalRestartButton.click();
+        retryButton.classList.add('hidden');
+    });
+
+    close2048Button.addEventListener('click', () => {
+        game2048Container.classList.add('hidden');
+    });
+
+    // --- Initial Setup ---
+    updateMarkers();
+</script>
     
 </body>
 </html>
